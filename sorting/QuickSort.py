@@ -6,4 +6,12 @@ class QuickSort(Sorting):
         self.arr = arr
     
     def sort(self, arr):
-        print('sorting qusing quick sort')
+        start = 0
+        end = len(arr) - 1
+        piv = end - start
+        leftArr = []
+        rightArr = []
+
+        for i in range(arr):
+            if i in range(len(arr)):
+                
