@@ -1,4 +1,33 @@
 
+function firstRepeatedElement(arr){
+
+  if(arr.length < 1 || !arr){
+    return null
+  }
+
+  const elementSet = new Set()
+
+  for(let i=0; i<arr.length; i++){
+    // console.log(arr[i])
+    if(elementSet.has(arr[i])){
+      // console.log(arr[i])
+      return arr[i]
+    }
+    elementSet.add(arr[i])
+  }
+
+
+}
+
+
+console.log(firstRepeatedElement([1, 2, 3, 2, 1, 1]) == 2)
+
+console.log(firstRepeatedElement([1, 1, 3, 2, 1, 1]) == 1)
+
+console.log(firstRepeatedElement([1, 2, 3, 4, 3, 4]) == 3)
+console.log(firstRepeatedElement([]) == null)
+
+
 
 // function generatePasswords(validCharacters, minLength, maxLength) {
 //   const passwords = [];
