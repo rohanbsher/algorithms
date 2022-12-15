@@ -1,4 +1,95 @@
 /*
+function fibRecurisve(k){
+
+  if(k === 0){
+    return 0
+  } else if(k < 3){
+    return 1
+  }
+
+  return fib(k-1) + fib(k-2)
+
+}
+
+function fib(k){
+
+  if(k === 0){
+    return 0
+  } else if(k < 3){
+    return 1
+  }
+
+  let prev = 0
+  let curr = 1
+  for(let i=curr; i<k; i++){
+    [prev, curr] = [curr, prev + curr]
+  }
+  console.log(curr)
+  return curr
+
+}
+// 0 1 2 3 4 5 6  7  8  9
+// 0 1 1 2 3 5 8  13 21 34
+console.log(fib(2) === 1)
+console.log(fib(3) === 2)
+console.log(fib(4) === 3)
+console.log(fib(9) === 34)
+
+
+/*
+
+function parenBit(word){ 
+
+  let sub = ""
+
+  function helper(word, startRec){
+    if(word.length < 1){
+    return
+    }
+
+    if(word[0] === "("){
+      sub += "("
+      return helper(word.slice(1, word.length), true)
+    } else if(word[0] === ")") {
+      sub += ")"
+      startRec = false
+    }
+
+    if(startRec){
+      sub += word[0]
+      return helper(word.slice(1, word.length), true)
+    }
+
+    helper(word.slice(1, word.length), false)
+
+  }
+  helper(word, false)
+
+  return sub
+
+}
+
+console.log(parenBit("(asdas") === "")
+console.log(parenBit("asdas(gga)asd"))
+console.log(parenBit("(asas)"))
+console.log(parenBit("()"))
+
+
+console.table([
+  parenBit("xyz(abc)123") === "(abc)",
+  parenBit("x(hello)") === "(hello)",
+  parenBit("(xy)1") === "(xy)",
+  parenBit("not really (possible)") === "(possible)",
+  parenBit("(abc)") === "(abc)",
+  parenBit("(abc)xyz") === "(abc)",
+  parenBit("(abc)x") === "(abc)",
+  parenBit("(x)") === "(x)",
+  parenBit("()") === "()",
+  parenBit("res (ipsa) loquitor") === "(ipsa)",
+  parenBit("hello(not really)there") === "(not really)",
+  parenBit("ab(ab)ab") === "(ab)",
+  parenBit("ab(ab)ab") === "(ab)",
+])
 
 
  */
