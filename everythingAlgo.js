@@ -1,3 +1,117 @@
+/*
+
+function strCopies(word, sub, times){
+
+  let count = 0
+
+  function findCopies(word, sub){
+    if(word.length < sub.length){
+      return
+    }
+
+    // console.log(word)
+    if(word.slice(0,sub.length) === sub){
+      count++
+      findCopies(word.slice(sub.length, word.length), sub)
+    } else {
+      findCopies(word.slice(sub.length, word.length), sub)
+    }
+  }
+
+  findCopies(word, sub)
+
+  // console.log(count)
+  return count === times
+}
+
+console.log(strCopies("catcowcat", "cat", 2) == true)
+console.log(strCopies("catcowcat", "cow", 2) == false)
+console.log(strCopies("catcowcat", "cow", 1) == true)
+console.log(strCopies("iiijjj", "i", 3) == true)
+console.log(strCopies("iiijjj", "i", 4) == false)
+console.log(strCopies("iiijjj", "ii", 2) == false)
+console.log(strCopies("iiijjj", "ii", 3) == false)
+console.log(strCopies("iiijjj", "x", 3) == false)
+console.log(strCopies("iiijjj", "x", 0) == true)
+console.log(strCopies("iiiiij", "iii", 3) == false)
+console.log(strCopies("iiiiij", "iii", 4) == false)
+console.log(strCopies("ijiiiiij", "iiii", 2) == false)
+console.log(strCopies("ijiiiiij", "iiii", 3) == false)
+console.log(strCopies("dogcatdogcat", "dog", 2) == true)
+
+
+class Node {
+  constructor(val, next=null) {
+    this.val = val
+    this.next = next
+  }
+}
+
+
+
+function firstIndexInLL(node, target){
+
+  let index = 0;
+  while(node){
+    if(node.val === target){
+      return index
+    }
+    index++
+    // console.log(index)
+    node = node.next
+  }
+  return -1
+
+}
+
+
+let list1 = new Node(1, new Node(2, new Node(3, new Node(4, new Node(5)))))
+let list2 = new Node(2)
+let list3 = new Node(-1, new Node(-2, new Node(-3, new Node(-4, new Node(-5)))))
+let list4 = new Node(1, new Node(2, new Node(3, new Node(2, new Node(1)))))
+
+console.log(firstIndexInLL(null, 12) === -1)
+console.log(firstIndexInLL(list1, 9) === -1)
+console.log(firstIndexInLL(list1, 3) === 2)
+console.log(firstIndexInLL(list2, 2) === 0)
+console.log(firstIndexInLL(list2, 1) === -1)
+console.log(firstIndexInLL(list3, -2) === 1)
+console.log(firstIndexInLL(list4, 2) === 1)
+console.log(firstIndexInLL(list4, 1) === 0)
+
+
+function firstRepeatedElement(arr){
+
+  if(arr.length < 1 || !arr){
+    return null
+  }
+
+  const elementSet = new Set()
+
+  for(let i=0; i<arr.length; i++){
+    // console.log(arr[i])
+    if(elementSet.has(arr[i])){
+      // console.log(arr[i])
+      return arr[i]
+    }
+    elementSet.add(arr[i])
+  }
+
+
+}
+
+
+console.log(firstRepeatedElement([1, 2, 3, 2, 1, 1]) == 2)
+
+console.log(firstRepeatedElement([1, 1, 3, 2, 1, 1]) == 1)
+
+console.log(firstRepeatedElement([1, 2, 3, 4, 3, 4]) == 3)
+console.log(firstRepeatedElement([]) == null)
+
+*/
+
+
+
 
 function firstRepeatedElement(arr){
 
