@@ -1,5 +1,235 @@
 
 
+// function generatePasswords(validCharacters, minLength, maxLength) {
+//   const passwords = [];
+//   const letters = [];
+
+//   function permute() {
+//     if (letters.length > maxLength)
+//       return; // base case
+
+//     if (letters.length >= minLength && letters.length <= maxLength) {
+//       passwords.push(letters.join(''));
+//     }
+
+//     for (let i = 0; i < validCharacters.length; i++) {
+//       letters.push(validCharacters[i]); // append
+//       permute();
+//       letters.pop(); // undo after recursion
+//     }
+//   }
+
+//   permute();
+
+//   return passwords;
+// }
+
+
+
+
+// console.log(JSON.stringify(generatePasswords(["a","b","c","d"], 0, 0))
+// === JSON.stringify([""]))
+// console.log(JSON.stringify(generatePasswords(["a","b","c","d"], 0, 1))
+// === JSON.stringify(["","a","b","c","d"]))
+// console.log(JSON.stringify(generatePasswords(["a","b","c","d"], 1, 1))
+// === JSON.stringify(["a","b","c","d"]))
+// console.log(JSON.stringify(generatePasswords(["a","b"], 3, 3))
+// === JSON.stringify(["aaa","aab","aba","abb","baa","bab","bba","bbb"]))
+// console.log(JSON.stringify(generatePasswords(["a"], 2, 4))
+// === JSON.stringify(["aa","aaa","aaaa"]))
+// console.log(JSON.stringify(generatePasswords(["a"], 2, 4))
+// === JSON.stringify(["aa","aaa","aaaa"]))
+// console.log(JSON.stringify(generatePasswords(["a","b","c"], 2, 3))
+// === JSON.stringify(["aa","aaa","aab","aac","ab","aba","abb","abc",
+//   "ac","aca","acb","acc","ba","baa","bab","bac","bb","bba","bbb","bbc",
+//   "bc","bca","bcb","bcc","ca","caa","cab","cac","cb","cba","cbb","cbc",
+//   "cc","cca","ccb","ccc"]))
+// console.log(JSON.stringify(generatePasswords(["a","b","c","d"], 2, 3))
+// === JSON.stringify(["aa","aaa","aab","aac","aad","ab","aba","abb",
+//   "abc","abd","ac","aca","acb","acc","acd","ad","ada","adb","adc",
+//   "add","ba","baa","bab","bac","bad","bb","bba","bbb","bbc","bbd",
+//   "bc","bca","bcb","bcc","bcd","bd","bda","bdb","bdc","bdd","ca",
+//   "caa","cab","cac","cad","cb","cba","cbb","cbc","cbd","cc","cca",
+//   "ccb","ccc","ccd","cd","cda","cdb","cdc","cdd","da","daa","dab",
+//   "dac","dad","db","dba","dbb","dbc","dbd","dc","dca","dcb","dcc",
+//   "dcd","dd","dda","ddb","ddc","ddd"]))
+
+// console.log(generatePasswords(["a","b","c","d"], 3, 4).length === 320)
+// console.log(generatePasswords(["a","b","c","d"], 3, 5).length === 1344)
+
+
+ /* create a function that returns a string of current temperature values in celsius for location: Jagraon, Punjab, India */
+// function getWeather() {
+//   var xhr = new XMLHttpRequest();
+//   xhr.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=Jagraon,IN&appid=2de143494c0b295cca9337e1e96b00e0', true);
+//   xhr.onreadystatechange = function() {
+//     if (xhr.readyState == 4) {
+//       var resp = JSON.parse(xhr.responseText);
+//       var temp = resp.main.temp;
+//       var tempC = Math.round(temp - 273.15);
+//       var weather = resp.weather[0].main;
+//       var weatherDiv = document.createElement('div');
+//       weatherDiv.innerHTML = 'The weather in Jagraon, Punjab, India is ' + tempC + '&deg;C and ' + weather + '.';
+//       document.body.appendChild(weatherDiv);
+//     }
+//   }
+//   xhr.send();
+// }
+
+// console.log(getWeather())
+
+/*
+
+We're given a tree, and we want to find all of the nodes in the tree that have siblings (other nodes under their parent).
+
+Return an array of nodes representing each sibling in any order. No only children can be in your result array.
+
+Function Signature: 
+function findSiblingNodes(root)
+
+// */
+
+// class TreeNode {
+//   constructor(value, left = null, right = null) {
+//     this.value = value;
+//     this.left = left;
+//     this.right = right;
+//   }
+// }
+
+
+// // recursion
+// function findSiblingNodes(root){
+//   let siblings = []
+//   let node = root
+//   findSiblingsBfs(node, siblings)
+//   // findSiblingsDfs(node, siblings)
+//   return siblings
+// }
+
+// function findSiblingsDfs(root, siblings){
+//   if(!root){
+//     return []
+//   }
+
+//   if(root.left && root.right){
+//     siblings.push(root.left.value)
+//     siblings.push(root.right.value)
+//   }
+//   findSiblings(root.left, siblings)
+//   findSiblings(root.right, siblings)
+// }
+
+
+// function findSiblingsBfs(root, siblings = []){
+//   if(!root){
+//     return []
+//   }
+
+//   let queue = [root]
+
+//   // FiFO [12, 2 , 3]
+//   while(queue.length > 0){
+//     let node = queue.shift()
+
+//     if(node.left && node.right){
+//       siblings.push(node.left.value)
+//       siblings.push(node.right.value)
+//     }
+//     if(node.left){
+//       queue.push(node.left)
+//     }
+//     if(node.right){
+//       queue.push(node.right)
+//     }
+//   }
+
+//   return siblings
+// }
+
+
+
+// // test cases
+
+// /*
+
+// Example 1
+
+//            1
+//        2       3
+//      _   4   _   _
+    
+// should return [2, 3]
+
+// */
+
+// const a = new TreeNode(1);
+// const b = new TreeNode(2);
+// const c = new TreeNode(3);
+// const d = new TreeNode(4);
+// a.left = b;
+// a.right = c;
+// b.right = d;
+
+// /*
+
+// Example 2
+
+
+//            12
+//        3       4
+//     1    _   6   _
+    
+// should return [3, 4]
+
+// */
+
+// const e = new TreeNode(12);
+// const f = new TreeNode(3);
+// const g = new TreeNode(4);
+// const h = new TreeNode(1);
+// const i = new TreeNode(6);
+
+// e.left = f;
+// e.right = g;
+// f.left = h;
+// g.left = i;
+
+// /*
+
+// Example 3
+
+
+//            12
+//        3       4
+//     1    _   6   _
+//   9  7      _ _
+    
+// should return [3, 4, 9, 7]
+
+// */
+
+// const j = new TreeNode(12);
+// const k = new TreeNode(3);
+// const l = new TreeNode(4);
+// const m = new TreeNode(1);
+// const n = new TreeNode(6);
+// const o = new TreeNode(9);
+// const p = new TreeNode(7);
+
+// j.left = k;
+// j.right = l;
+// k.left = m;
+// m.left = o;
+// m.right = p;
+// l.left = n;
+
+// console.log(findSiblingsBfs(null), "[]");
+// console.log(findSiblingsBfs(a), "[2, 3]");
+// console.log(findSiblingsBfs(e), "[3, 4]");
+// console.log(findSiblingsBfs(j), "[3, 4, 9, 7]");
+
+
 
 
 class ListNode {
