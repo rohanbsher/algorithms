@@ -1,3 +1,75 @@
+function removeFromList(head, target) {
+  if (!head) {
+    return null
+  }
+  if (head.value === target) {
+    return head.next
+  }
+  head.next = solution(head.next, target)
+  return head
+  }
+
+
+
+function sumByLevel(root) {
+
+  let sums = []
+  function helper(root, level){
+      if(!root){
+          return level
+      }
+      
+      if(sums.length > level){
+          sums[level] += root.value
+      } else {
+          sums[level] = root.value
+      }
+      
+      helper(root.left, level + 1)
+      helper(root.right, level + 1)
+  }
+  
+  helper(root, 0)
+  return Math.max(...sums)
+
+}
+
+// Expected Runtime
+// Time: O(N) to iterate through the length N array
+// Space: O(N) to store up to N elements
+
+function removeDuplicateFellows(fellows){
+
+  let removeDup = new Set(fellows) 
+  let arr = Array.from(removeDup)
+  return arr
+
+}
+
+console.log(removeDuplicateFellows(["oliver", "pixel", "oliver", "pinky"]))
+
+console.table([
+  JSON.stringify(removeDuplicateFellows(
+  ["oliver", "pixel", "oliver", "pinky"])) 
+  === JSON.stringify(["oliver", "pixel", "pinky"]),
+
+  JSON.stringify(removeDuplicateFellows([])) === "[]",
+
+  JSON.stringify(removeDuplicateFellows(["Oliver", "oliver"]))
+  === JSON.stringify(["Oliver", "oliver"]),
+
+  JSON.stringify(removeDuplicateFellows(["pinky"]))
+  === JSON.stringify(["pinky"]),
+
+  JSON.stringify(removeDuplicateFellows(["pinky", "pinky", "pinky"]))
+  === JSON.stringify(["pinky"]),
+
+  JSON.stringify(removeDuplicateFellows(["pinky", "paavo"]))
+  === JSON.stringify(["pinky", "paavo"]),
+])
+
+
+
 /*
 function fibRecurisve(k){
 
