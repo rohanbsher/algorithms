@@ -1,3 +1,44 @@
+// Cows and bulls
+
+
+var getHint = function(secret, guess) {
+    
+    let xNumOfBulls = 0
+    let yNumOfCows = 0 
+    let a = "A"
+    let b = "B"
+
+    let secretMap = new Map()
+    let guessArr = []
+
+    for(let i=0; i<secret.length; i++){
+        if(secret[i] === guess[i]){
+            xNumOfBulls++
+        } else{
+            secretMap[secret[i]] = (secretMap[secret[i]] || 0) + 1
+            guessArr.push(guess[i])
+        }
+    }
+
+    for(const key of guessArr){
+        if(secretMap[key] && secretMap[key] > 0){
+            secretMap[key] = secretMap[key] - 1
+            yNumOfCows++
+        }
+    }
+
+    return xNumOfBulls + a + yNumOfCows + b;
+};
+
+
+
+
+
+
+
+
+
+
 function removeFromList(head, target) {
   if (!head) {
     return null
