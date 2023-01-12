@@ -1,3 +1,62 @@
+
+
+
+
+
+
+
+
+
+
+
+function findClosestValueInBst(tree, target) {
+  // Write your code here.
+
+  let closeVal = Infinity
+  let output = 0
+
+  let node = tree
+
+  while(node){
+    let diff = Math.abs(target - node.value)
+    
+    if(closeVal > diff){
+      closeVal = diff
+      output = node.value
+    }
+    
+    if(node.value < target){
+      node = node.right
+    } else {
+      node = node.left
+    }
+    
+  }
+
+  return output
+  
+}
+
+class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+exports.findClosestValueInBst = findClosestValueInBst;
+
+
+
+
+
+
+
+
+
+
+
 // Cows and bulls
 
 
