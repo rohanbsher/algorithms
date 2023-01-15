@@ -1,3 +1,15 @@
+ftion covert(num) {
+    
+    fucntion covertBase(){
+
+    let val = num.toString(7)
+    
+    return parseInt(val)
+
+}
+
+
+
 
 
 function checkPerfectSquare(num) {
