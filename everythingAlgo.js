@@ -1,5 +1,12 @@
 
 
+function checkPerfectSquare(num) {
+
+    let square = Math.sqrt(num)
+    
+    return Number.isInteger(square)
+
+}
 
 
 
