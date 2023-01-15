@@ -1,4 +1,72 @@
-ftion covert(num) {
+
+
+
+
+
+
+
+
+
+
+
+function reverseTwoLinkedListReturnSum(l1, l2) {
+    
+    let l1Arr = []
+    let l2Arr = []
+    
+    let str1 = ""
+    let str2 = ""
+    
+    while(l1){
+        l1Arr.push(l1.value)
+        str1 += l1.value
+        l1 = l1.next
+
+    }
+    
+    // console.log(str1)
+    // console.log(Number.parseInt(str1))
+    
+    while(l2){
+        l2Arr.push(l2.value)
+        str2 += l2.value
+        l2 = l2.next
+    }
+
+    let update1 = l1Arr.reverse().join('')
+    let update2 = l2Arr.reverse().join('')
+    
+    let answer = parseInt(update1) + parseInt(update2)
+    let returnLL = new ListNode()
+    let node = returnLL
+    
+    
+    let ans = Array.from(String(answer), Number).reverse()
+    // let finalAns = ans.reverse
+    
+    console.log(ans)
+    
+    for(let i=0; i<ans.length; i++){
+        node.next = new ListNode(ans[i])
+        node = node.next
+        // node = node.next
+    }
+    
+    return returnLL.next
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// function covertBase(num) {
     
     fucntion covertBase(){
 
