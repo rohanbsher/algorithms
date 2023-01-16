@@ -1,4 +1,20 @@
+function reverseList(node){
 
+  if(!node || !node.next){
+    return node
+  }
+
+  let revHead = reverseList(node.next) // 1 2 3 4 5 
+
+  // console.log("Node.next.next" + )
+  node.next.next = node
+  node.next = undefined
+
+  return revHead
+
+}
+
+console.log(reverseList(list))
 
 
 
