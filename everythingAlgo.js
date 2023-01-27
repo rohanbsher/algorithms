@@ -1,3 +1,38 @@
+
+function bubbleRecursive(arr, i, j) {
+  if(i == arr.length-1)
+    return arr
+
+  if(j == arr.length-i-1) {
+    i++
+    j=0
+    
+  }
+
+  if (arr[j+1] < arr[j]) {
+    const tmp=arr[j]
+    arr[j]=arr[j+1]
+    arr[j+1]=tmp
+    }
+  
+  return bubbleRecursive(arr, i, j+1)
+
+}
+
+
+// const array = [3,2,1,5,5,7]
+// bubbleRecursive(array, 0, 0)
+// console.log(array)
+console.log(bubbleRecursive([-1, 8, 2, 4, 3], 0, 0))
+
+
+
+
+
+
+
+
+
 function reverseList(node){
 
   if(!node || !node.next){
