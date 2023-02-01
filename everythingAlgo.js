@@ -1,3 +1,27 @@
+function plusOne(digits: number[]): number[] {
+
+    // 999    000
+    let i = digits.length-1
+    while(i >= 0){
+        let addOne = digits[i] + 1
+        if(addOne === 10){
+            digits[i] = 0
+            
+            if(i === 0){
+                digits.unshift(1)
+            }
+        } else {
+            digits[i] = addOne
+            break;
+        }
+        i--
+    }
+    return digits
+};
+
+
+
+
 
 function bubbleRecursive(arr, i, j) {
   if(i == arr.length-1)
