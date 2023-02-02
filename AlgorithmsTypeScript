@@ -11,20 +11,19 @@
  */
 
 function removeElements(head: ListNode | null, val: number): ListNode | null {
-
-    let node = head
-    if(node && node.val === val && !node.next){
-        return node
+    if(!head){
+        return head
     }
-    while(node && node.next){
-        if(node.val === val) {
-            return node.next 
+    
+    let prev = new ListNode(-Infinity, head)
+    let curr = prev
+    while(curr.next){
+        if(curr.next.val === val) {
+             curr.next = curr.next.next
+        } else {
+        curr = curr.next
         }
-        if(node.next.val === val){
-            node.next = node.next.next
-        }
-        node = node.next
     }
-    return head
+    return prev.next
     
 };
