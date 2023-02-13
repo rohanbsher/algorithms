@@ -1,3 +1,6 @@
+
+
+
 function subdomainVisits(cpdomains: string[]): string[] {
 
     // we have strings that are separated by commas
