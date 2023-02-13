@@ -1,3 +1,47 @@
+function subdomainVisits(cpdomains: string[]): string[] {
+
+    // we have strings that are separated by commas
+    // [] -> 
+    // split the array based on space 
+    // split the second half based on period
+    // 
+    
+    let domains = new Map()
+    let retStr: string [] = []
+    
+    for(let i=0; i<cpdomains.length; i++){
+        let [count, domainName] = cpdomains[i].split(' ');
+        
+        let subDomain = domainName.split('.')
+        
+        for(let j=0; j<subDomain.length; j++){
+            let sub = subDomain.slice(j).join('.')
+            domains.set(sub, (domains.get(sub) || 0) + parseInt(count))
+        }    
+    }
+    
+    for(let [key, value] of domains){
+        retStr.push(`${value} ${key}`)
+    } 
+    
+    return retStr
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class Logger {
     dict = new Map<string, number>()
     constructor() {
