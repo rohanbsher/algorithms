@@ -1,3 +1,41 @@
+// Checks if matrix is monotonically increasing
+
+function solution(matrix) {
+    
+    // let columnIsMonotonic = true
+    // let rowIsMonotonic = true
+
+    for(let i=0; i<matrix.length; i++){
+        for(let j=0; j<matrix[i].length-1; j++){
+            console.log(" we're in array " + matrix[i] + " at value " + matrix[i][j])
+            if(matrix[i][j] > matrix[i][j+1]){
+                return false
+            }
+        }
+        
+        if((i+1 < matrix.length) && matrix[i][0] > matrix[i+1][0]){
+            return false
+        }
+    }
+    
+    return true
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function plusOne(digits: number[]): number[] {
 
     // 999    000
