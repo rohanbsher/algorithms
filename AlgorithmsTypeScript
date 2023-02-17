@@ -1,3 +1,34 @@
+// return a sum array from both elemnts and center if length is odd
+
+function solution(array: number[]): number[] {
+
+    let [left, right] = [0, array.length-1]
+    
+    let ansArr: number[] = []
+    while(left<right) {
+        ansArr.push(array[left] + array[right])
+        
+        left++
+        right--
+    }
+    if(left === right){
+        ansArr.push(array[left])
+    }
+
+    return ansArr
+}
+
+
+
+
+
+
+
+
+
+
+
+
 // return indicies of two compliment pairs that add up to the target value input arr = [1,2,3,5] target = 5  |   output = [1, 2]
 
 function solution(array: number[], target: number): number[] {
