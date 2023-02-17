@@ -1,4 +1,43 @@
 
+// reversing an array in blocks 
+
+function solution(array: number[], k: number): number[] {
+
+   if (k <= 1 || k > array.length) {
+    // If k is 1 or less, or greater than the length of the array, do nothing
+    return array;
+  }
+
+  let result: number[] = [];
+
+  for (let i = 0; i < array.length; i += k) {
+    const block = array.slice(i, i + k);
+    if (block.length === k) {
+      // If the block is full, reverse it and add it to the result
+      result.push(...block.reverse());
+    } else {
+      // If the block is not full, add it to the result as is
+      result.push(...block.reverse());
+    }
+  }
+
+  return result;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function subdomainVisits(cpdomains: string[]): string[] {
