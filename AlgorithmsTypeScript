@@ -1,3 +1,28 @@
+// return indicies of two compliment pairs that add up to the target value input arr = [1,2,3,5] target = 5  |   output = [1, 2]
+
+function solution(array: number[], target: number): number[] {
+
+    const seenValueOnIndex = new Map<number, number>(); 
+    
+    for(let i=0 ; i<array.length; i++) {
+        let difference = target - array[i]
+        if(seenValueOnIndex.has(difference)){
+            return [seenValueOnIndex.get(difference), i]
+        }
+        seenValueOnIndex.set(array[i], i)
+    }
+   
+  return [];
+}
+
+
+
+
+
+
+
+
+
 
 // flip an array in place
 
