@@ -1,3 +1,42 @@
+function minDepth(root: TreeNode | null): number {
+
+    //baseCase
+    // if the tree is empty return 0
+    if(!root){
+        return 0 
+    }
+    // [1, null, 3]
+    // if the root has no children we've reached the end of tree
+    if(!root.left && !root.right){
+        return 1
+    } 
+    
+    let left = minDepth(root.left)
+    let right = minDepth(root.right)
+
+    if(left === 0){
+        left = Infinity
+    } else if(right === 0){
+        right = Infinity
+    }
+    
+    return 1 + Math.min(left, right)
+    
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // return a sum array from both elemnts and center if length is odd
 
 function solution(array: number[]): number[] {
