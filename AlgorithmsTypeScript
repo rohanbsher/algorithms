@@ -1,3 +1,37 @@
+You're a coder - you know how important it is to have a closing parenthesis for every opening parenthesis! Given n pairs of parentheses, write a function that generates all of the possible combinations of regular parentheses, sorted in lexicographical order.
+
+Example
+
+For n = 4, the output should be
+
+solution(n) = 
+[
+  "(((())))", "((()()))",
+  "((())())", "((()))()", 
+  "(()(()))", "(()()())", 
+  "(()())()", "(())(())", 
+  "(())()()", "()((()))", 
+  "()(()())", "()(())()", 
+  "()()(())", "()()()()"
+]
+Input/Output
+
+[execution time limit] 5 seconds (ts)
+
+[input] integer n
+
+A number representing the pairs of parentheses. A pair is considered to be an opening parenthesis ( and a closing parenthesis ).
+
+Guaranteed constraints:
+1 ≤ n ≤ 8.
+
+[output] array.string
+
+An array containing strings representing all possible combinations of well-formed parentheses.
+
+
+
+
 
 
 function solution(n: number): string[] {
