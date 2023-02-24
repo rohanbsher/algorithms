@@ -1,4 +1,51 @@
 
+
+function solution(n: number): string[] {
+    
+    let result: string[] = []
+    
+    function backtrack(paren: string, open: number, close: number){
+        if(paren.length === n * 2){
+            result.push(paren);
+            return;
+        }
+        
+        if(open < n){
+            backtrack(paren + '(', open+1, close);
+        }
+        
+        if(close < open){
+            backtrack(paren + ')', open, close+1);
+        }
+    }
+    
+    backtrack('', 0, 0);
+    
+    return result
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // finds the max path
 function maxPathSum(root: TreeNode | null): number {
     let maxPath = -Infinity
