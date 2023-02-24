@@ -1,4 +1,41 @@
 
+// finds the max path
+function maxPathSum(root: TreeNode | null): number {
+    let maxPath = -Infinity
+
+    function dfs(root: TreeNode): number {
+        //base case
+        if(!root){
+            return 0
+        }
+
+        let left = Math.max(dfs(root.left), 0)
+        let right = Math.max(dfs(root.right), 0)
+
+        maxPath = Math.max(maxPath, root.val + left + right)
+
+        return root.val + Math.max(left, right)
+    }
+
+    dfs(root)
+
+    return maxPath === -Infinity ? 0 : maxPath
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
 
     if(!p && !q){
