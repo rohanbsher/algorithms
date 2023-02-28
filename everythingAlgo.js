@@ -1,3 +1,57 @@
+// O(N!) time, O(N) space; N = length of input
+function generatePermutations(list) {
+  let output = []
+
+  if(list.length === 0){
+    return 0
+  }
+
+  if(list.length === 1){ // 
+    return [list[0]]
+  }
+
+  function backtrack(list, seq){
+
+    if(seq.length === list.length){
+      output.push(seq)
+      return
+    }
+
+    for(let i=0; i<list.length; i++){
+      if(!seq.includes(list[i])){
+        seq.push(list[i])
+        backtrack(list, [...seq])
+        seq.pop()
+      }
+    }
+
+
+// bk([1])
+//   bk([1,2])
+//     bk([1,2,3])
+// bk([1,3])
+//   bk([1,3,2])
+// []
+// bk([2])
+  }
+
+
+  backtrack(list, [])
+  return output
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Checks if matrix is monotonically increasing
 
 function solution(matrix) {
