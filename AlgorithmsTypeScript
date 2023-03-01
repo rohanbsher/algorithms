@@ -1,3 +1,38 @@
+function findTargetInBST(root: TreeNode | null, k: number): boolean {
+
+    let map = new Map()
+    
+    function dfs(root: TreeNode, k): boolean{
+        if(!root){
+            return false
+        }
+
+        if(map.has(root.val)){
+            return true
+        }
+        map.set(k-root.val, 1)
+        
+
+        return dfs(root.left, k) || dfs(root.right, k)
+    }
+    
+    return dfs(root, k)    
+    
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 type check = TreeNode | null
 
 interface check1{
