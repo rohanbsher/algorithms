@@ -1,3 +1,78 @@
+type check = TreeNode | null
+
+interface check1{
+  left: TreeNode | null
+  right: TreeNode | null
+}
+
+class TreeNode{
+  constructor(public val: number, public left: check=null, public right: check = null){
+    this.val = val
+    this.left = left
+    this.right = right
+  }
+}
+
+function bstLeastCommonAncestor(root: check, node1: number, node2: number){  
+    if(!root){
+      return
+    }
+
+    if(node1 === root.val || node2 === root.val){
+      return root.val
+    }
+
+    let left: number = bstLeastCommonAncestor(root.left, node1, node2)!
+    let right: number = bstLeastCommonAncestor(root.right, node1, node2)!
+
+    if(left && right){
+      return root.val
+    } else if(!left){
+      return right
+    } else { 
+      return left
+    }
+}
+// n1 = 1  n2 = 15
+
+/*
+      10
+     /  \
+    5    20
+   /     / \
+  1     15  23
+
+*/
+
+let tree = new TreeNode(10, 
+  new TreeNode(5, new TreeNode(1)), 
+  new TreeNode(20, new TreeNode(15), new TreeNode(23)))
+
+// console.log(bstInOrder(tree))
+console.log(bstLeastCommonAncestor(tree, 20, 15))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 You're a coder - you know how important it is to have a closing parenthesis for every opening parenthesis! Given n pairs of parentheses, write a function that generates all of the possible combinations of regular parentheses, sorted in lexicographical order.
 
 Example
