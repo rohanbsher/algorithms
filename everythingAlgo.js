@@ -1,3 +1,57 @@
+//
+// Binary trees are already defined with this interface:
+// function Tree(x) {
+//   this.value = x;
+//   this.left = null;
+//   this.right = null;
+// }
+
+// check right view of a binary tree
+function solution(t) {
+
+    let output = []
+    let map = new Map()
+    
+    function dfs(root, lvl){
+        if(!root){
+            return 
+        }
+        
+        if(!map.has(lvl)){
+            map.set(lvl, root.value)
+            output.push(root.value)
+        }
+        
+        dfs(root.right, lvl+1)
+        dfs(root.left, lvl+1)
+    }
+    
+    dfs(t, 0)
+    return output
+    
+//     1 - 0
+//    / \
+//   2   3 - 1
+//  /   
+// 4
+// [1 3 4]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // O(N!) time, O(N) space; N = length of input
 function generatePermutations(list) {
   let output = []
