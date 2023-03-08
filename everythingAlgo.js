@@ -1,3 +1,63 @@
+// base case being depth is one 
+// insert at root and append the left subtree
+
+//base case being depth === n-1
+
+// add a row to tree and shift the nodes down respectively
+
+var addOneRow = function(root, val, depth) {
+
+    //base case
+    if(depth === 1){
+        let node = new TreeNode(val)
+        node.left = root
+        return node
+    }
+
+    insert(root, val, depth, n=1)
+
+    return root
+
+};
+
+const insert = (root, val, depth, n=1) => {
+        if(!root){
+            return 
+        }
+
+        if(n === depth-1) {
+            let left = root.left
+            root.left = new TreeNode(val)
+            root.left.left = left
+
+            let right = root.right
+            root.right = new TreeNode(val)
+            root.right.right = right
+        } else {
+            insert(root.left, val, depth, n+1)
+            insert(root.right, val, depth, n+1)
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //
 // Binary trees are already defined with this interface:
 // function Tree(x) {
