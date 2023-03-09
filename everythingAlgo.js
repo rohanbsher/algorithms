@@ -1,3 +1,153 @@
+You are given the head of a linked list, and an integer k.
+
+Return the head of the linked list after swapping the values of the kth node from the beginning and the kth node from the end (the list is 1-indexed).
+ 
+
+EXAMPLE(S)
+Input: head = [1,2,3,4,5], k = 2
+Output: [1,4,3,2,5]
+
+Input: head = [7,9,6,6,7,8,3,0,9,5], k = 5
+Output: [7,9,6,6,8,7,3,0,9,5]
+ 
+
+FUNCTION SIGNATURE
+def swapNodes(self, head: ListNode, k: int) -> ListNode:
+'''
+
+
+// k will be smaller than the length of list
+// assumptions indexing 1
+
+// Explore test cases
+// [1,2,3,4,5]; k=3 => [1,2,3,4,5]
+// [1,2,3,4,5]; k=4 => [1,4,3,2,5]
+// [] => []
+// [1,2,3,4,5,6] k:9 => []
+
+Wrong test case
+// [1,2,3,4,5,6,7,8,9] k:2 => [1,8,3,5,5,4,7,2,9]
+
+//Brainstrom different solutions
+1,2,3,4,5 k=3
+        f
+    e
+b
+
+1,2,3,4,5,6,7,8 k=4 
+              f
+        e
+      b
+
+1,2,3,4,5,6,7,8 k=2
+        f
+    e
+b
+
+e - 1
+f - k 
+
+Space : O(1) constant
+Time : O(N) linear
+
+//pseudocode
+-- check for edge cases-- 
+we'll have fast slow beginning and their indexs pointer
+
+let fast 
+let fastIdx = 1
+let end 
+let endIdx = 1
+let beginning
+let begIdx = 1
+
+1. move fast pointer until, fastIdx = k
+2. while fast.next (fast has not reached end of the list), move fast & end pointer 
+3. Once fast is at end of the list, move beginning pointer until begIdx = k 
+4. swap node values at beginning & end 
+5. return head of original list 
+
+plan & implement
+verify
+
+
+
+
+class Node {
+  constructor(value, next = null) {
+    this.value = value;
+    this.next = next;
+  }
+}
+
+
+function swapNodes(list, k) {
+
+  if(!list){
+    return null
+  }
+
+  let head = list
+
+  let fast = head
+  let fastIdx = 1
+  let slow = head
+  let begin = head
+
+  while(fastIdx !== k){
+    fast = fast.next
+    begin = begin.next
+    fastIdx++
+  }
+
+  while(fast.next){
+    fast = fast.next
+    slow = slow.next
+  }
+
+  [begin.value, slow.value] = [slow.value, begin.value]
+
+  return list
+}
+
+const printList = (head) => {
+  while(head != null){
+          console.log(head.value)
+          head = head.next;
+      }
+}
+
+
+
+let list = new Node(1, new Node(2, new Node(3, new Node(4, new Node(5, new Node(6))))))
+
+let list1 = new Node(1, new Node(2, new Node(3, new Node(4, new Node(5, new Node(6, new Node(7)))))))
+
+let list2 = new Node(1, new Node(2, new Node(3, new Node(4, new Node(5, new Node(6))))))
+
+let n = swapNodes(list, 3)
+let n1 = swapNodes(list1, 4)
+let n2 = swapNodes()
+// console.log(swapNodes(list, 3))
+// printList(n)
+// printList(n1)
+// printList(n2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // base case being depth is one 
 // insert at root and append the left subtree
 
