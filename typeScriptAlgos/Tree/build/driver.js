@@ -15,11 +15,11 @@ const tree_1 = __importDefault(require("./tree"));
 let tree = new tree_1.default(1, new tree_1.default(10, new tree_1.default(4), new tree_1.default(5)), new tree_1.default(9, new tree_1.default(6), new tree_1.default(7)));
 let tree2 = new tree_1.default(1, new tree_1.default(2, new tree_1.default(4), new tree_1.default(5)));
 console.log("Merge trees : ");
-console.log("good nodes trees : ");
+console.log("Good nodes trees : ");
+console.log("Left view of trees : ");
 // tree.mergeTrees(tree, tree2)
-// tree.printTree(tree)
 // tree.leftViewOFTree
-console.log(tree.goodNodes(tree));
+console.log(tree.leftViewOFTree(tree));
 // tree.printTree(tree)
 // console.log("Pre Order Traversal: ")
 // console.log("Pre Order Traversal: ")

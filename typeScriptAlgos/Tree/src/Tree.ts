@@ -80,8 +80,24 @@ draw a tree:
 			return
 		}
 
-		
+		let map = new Map<number, number>()
+		let level = 0
 
+		function traverse(node: check, level: number): void {
+
+			if(!node){
+				return
+			}
+
+			if(!map.has(level)){
+				map.set(level, node.val)
+			}
+			traverse(node?.left, level + 1)
+			traverse(node?.right, level + 1)
+		}
+
+		traverse(tree, 0)
+		console.log(map.values())
 	}
 
 	goodNodes(root: check): number {

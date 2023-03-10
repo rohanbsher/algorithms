@@ -18,7 +18,9 @@ console.log("Good nodes trees : ")
 console.log("Left view of trees : ")
 // tree.mergeTrees(tree, tree2)
 // tree.leftViewOFTree
-console.log(tree.goodNodes(tree))
+console.log(tree.leftViewOFTree(tree))
+
+
 // tree.printTree(tree)
 
 // console.log("Pre Order Traversal: ")

@@ -69,6 +69,20 @@ class TreeNode {
         if (!tree) {
             return;
         }
+        let map = new Map();
+        let level = 0;
+        function traverse(node, level) {
+            if (!node) {
+                return;
+            }
+            if (!map.has(level)) {
+                map.set(level, node.val);
+            }
+            traverse(node === null || node === void 0 ? void 0 : node.left, level + 1);
+            traverse(node === null || node === void 0 ? void 0 : node.right, level + 1);
+        }
+        traverse(tree, 0);
+        console.log(map.values());
     }
     goodNodes(root) {
         if (!root) {
