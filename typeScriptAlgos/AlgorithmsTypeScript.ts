@@ -1,3 +1,8 @@
+
+
+
+
+/*
 function findTargetInBST(root: TreeNode | null, k: number): boolean {
 
     let map = new Map()
@@ -70,14 +75,14 @@ function bstLeastCommonAncestor(root: check, node1: number, node2: number){
 }
 // n1 = 1  n2 = 15
 
-/*
+
       10
      /  \
     5    20
    /     / \
   1     15  23
 
-*/
+
 
 let tree = new TreeNode(10, 
   new TreeNode(5, new TreeNode(1)), 
@@ -108,36 +113,36 @@ console.log(bstLeastCommonAncestor(tree, 20, 15))
 
 
 
-You're a coder - you know how important it is to have a closing parenthesis for every opening parenthesis! Given n pairs of parentheses, write a function that generates all of the possible combinations of regular parentheses, sorted in lexicographical order.
+// You're a coder - you know how important it is to have a closing parenthesis for every opening parenthesis! Given n pairs of parentheses, write a function that generates all of the possible combinations of regular parentheses, sorted in lexicographical order.
 
-Example
+// Example
 
-For n = 4, the output should be
+// For n = 4, the output should be
 
-solution(n) = 
-[
-  "(((())))", "((()()))",
-  "((())())", "((()))()", 
-  "(()(()))", "(()()())", 
-  "(()())()", "(())(())", 
-  "(())()()", "()((()))", 
-  "()(()())", "()(())()", 
-  "()()(())", "()()()()"
-]
-Input/Output
+// solution(n) = 
+// [
+//   "(((())))", "((()()))",
+//   "((())())", "((()))()", 
+//   "(()(()))", "(()()())", 
+//   "(()())()", "(())(())", 
+//   "(())()()", "()((()))", 
+//   "()(()())", "()(())()", 
+//   "()()(())", "()()()()"
+// ]
+// Input/Output
 
-[execution time limit] 5 seconds (ts)
+// [execution time limit] 5 seconds (ts)
 
-[input] integer n
+// [input] integer n
 
-A number representing the pairs of parentheses. A pair is considered to be an opening parenthesis ( and a closing parenthesis ).
+// A number representing the pairs of parentheses. A pair is considered to be an opening parenthesis ( and a closing parenthesis ).
 
-Guaranteed constraints:
-1 ≤ n ≤ 8.
+// Guaranteed constraints:
+// 1 ≤ n ≤ 8.
 
-[output] array.string
+// [output] array.string
 
-An array containing strings representing all possible combinations of well-formed parentheses.
+// An array containing strings representing all possible combinations of well-formed parentheses.
 
 
 
@@ -528,17 +533,17 @@ class Logger {
 
 
 
-/**
- * Definition for singly-linked list.
- * class ListNode {
- *     val: number
- *     next: ListNode | null
- *     constructor(val?: number, next?: ListNode | null) {
- *         this.val = (val===undefined ? 0 : val)
- *         this.next = (next===undefined ? null : next)
- *     }
- * }
- */
+
+// Definition for singly-linked list.
+class ListNode {
+    val: number
+    next: ListNode | null
+    constructor(val?: number, next?: ListNode | null) {
+        this.val = (val===undefined ? 0 : val)
+        this.next = (next===undefined ? null : next)
+    }
+}
+ 
 
 function removeElements(head: ListNode | null, val: number): ListNode | null {
     if(!head){
@@ -557,3 +562,5 @@ function removeElements(head: ListNode | null, val: number): ListNode | null {
     return prev.next
     
 };
+
+*/
