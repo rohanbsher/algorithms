@@ -1,4 +1,91 @@
 /*
+'''
+Given a linked list and an integer k, reverse the list in groups of k.
+ 
+
+EXAMPLE(S)
+Input:
+1→2→3→4→5→6
+K=2
+
+Output:
+2→1→4→3→6→5
+ 
+
+FUNCTION SIGNATURE
+def reverseKGroup(head: ListNode, k: int) -> ListNode
+'''
+
+
+class Node{
+  constructor(val, next=null){
+    this.val = val
+    this.next = next
+  }
+}
+
+curr.next = null <- 1 
+
+1 - 2 - 3 - 4
+p    c 
+
+function reverseKGroup(head, k){
+
+  let prev = null
+  let curr = head
+
+  for(let i=0; i<k; i++){
+    if(!curr){
+      return prev
+    }
+
+    [curr.next, curr, prev] = [prev, curr.next, curr]
+  }
+
+  head.next = reverseKGroup(curr, k)
+  return prev
+
+}
+
+let list = new Node(1, new Node(2, new Node(3, new Node(4))))
+// console.log(reverseKGroup(list, 2))
+
+function printlist(list){
+
+  while(list){
+    console.log(list.val)
+    list = list.next
+  }
+}
+
+printlist(list)
+console.log('new List')
+printlist(reverseKGroup(list, 2))
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 Given a binary tree, return the deepest node (furthest away child). 
 
 Follow-up: If the Fellow did it recursively, ask them to do it iteratively or vice versa.
