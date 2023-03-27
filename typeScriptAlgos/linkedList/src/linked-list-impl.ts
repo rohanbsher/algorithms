@@ -7,13 +7,11 @@ export class LinkedList {
 		let prev: ls = null;
 		let curr: ls = node;
 
-		if (!curr) {
-			return prev;
-		}
-
 		for (let i = 0; i < k; i++) {
 			if (curr) {
 				[curr.next, curr, prev] = [prev, curr.next, curr];
+			} else {
+				return prev;
 			}
 		}
 
@@ -24,11 +22,10 @@ export class LinkedList {
 
 	printlist(head: ls): void {
 		if (!head) {
-			return 
+			return
 		}
 
 		let str = '';
-
 
 		while (head) {
 			str += head.val + ' '
