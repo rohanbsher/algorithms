@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev --poll ./Driver.ts",
+    "start:build": "tsc -w",
+    "start:run": "nodemon ./build/Driver.js",
+    "start1": "concurrently npm:start:*",
+    "start": "ts-node-dev --poll ./src/Driver.ts",
     "test": "jest --watchAll --no-cache"
   },
   "jest": {
@@ -15,12 +18,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.22",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.0.2"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",
     "jest": "^29.5.0",
-    "ts-jest": "^29.0.5"
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.2"
   }
 }

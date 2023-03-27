@@ -1,4 +1,4 @@
-import { LinkedList } from "./Linkedlist";
+import { LinkedList } from "./linked-list-impl";
 
 const list = new LinkedList(1, new LinkedList(2, new LinkedList(3, new LinkedList(4, new LinkedList(5, new LinkedList(6))))));
 const list1 = new LinkedList(1, new LinkedList(2, new LinkedList(3, new LinkedList(4, new LinkedList(5, new LinkedList(6))))));
