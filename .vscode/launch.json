@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "Launch Program",
       "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}/typeScriptAlgos/linkedList/src/Driver.ts",
+      "program": "${workspaceFolder}/typeScriptAlgos/realScenarios/src/driver.ts",
       "runtimeArgs": ["-r", "ts-node/register"],
       "sourceMaps": true,
       "outFiles": ["${workspaceFolder}/**/*.js"]
