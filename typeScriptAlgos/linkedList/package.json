@@ -4,9 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:build": "tsc -w",
-    "start:run": "nodemon ./build/Driver.js",
-    "start1": "concurrently npm:start:*",
     "start": "ts-node-dev --poll ./src/Driver.ts",
     "test": "jest --watchAll --no-cache"
   },

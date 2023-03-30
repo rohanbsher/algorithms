@@ -31,6 +31,36 @@ describe('LinkedList', () => {
     });
   });
 
+  describe('removeTargetNode', () => {
+    it('Remove Target Node 3 from the middle of list', () => {
+      const list = new LinkedList(1, new LinkedList(2, new LinkedList(3, new LinkedList(3, new LinkedList(5, new LinkedList(6))))));
+      const expected = new LinkedList(1, new LinkedList(2, new LinkedList(5, new LinkedList(6))));
+     
+      const ans = list.removeTargetNode(list, 3);
+      expect(ans).toEqual(expected);
+    });
+  });
+
+  describe('removeTargetNode', () => {
+    it('Remove Target Node 1 from the start of list', () => {
+      const list = new LinkedList(1, new LinkedList(1, new LinkedList(3, new LinkedList(1, new LinkedList(5, new LinkedList(1))))));
+      const expected = new LinkedList(3, new LinkedList(5));
+     
+      const ans = list.removeTargetNode(list, 1);
+      expect(ans).toEqual(expected);
+    });
+  });
+
+  describe('removeTargetNode', () => {
+    it('Remove all nodes from the list and return undefined', () => {
+      const list = new LinkedList(2, new LinkedList(2, new LinkedList(2, new LinkedList(2, new LinkedList(2, new LinkedList(2))))));
+      // const expected = new LinkedList(3);
+     
+      const ans = list.removeTargetNode(list, 2);
+      expect(ans).toEqual(undefined);
+    });
+  });
+
   describe('printlist', () => {
     it('should print the values of the list correctly', () => {
       const list = new LinkedList(1, new LinkedList(2, new LinkedList(3, new LinkedList(4, new LinkedList(5, new LinkedList(6))))));

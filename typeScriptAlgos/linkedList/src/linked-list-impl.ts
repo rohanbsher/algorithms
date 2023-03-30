@@ -20,6 +20,21 @@ export class LinkedList {
 		return prev;
 	}
 
+	removeTargetNode(head: ls, target: number): ls {
+
+		let sentinel: ls = new LinkedList(0, head)
+		let curr = sentinel
+		while (curr && curr.next) {
+			if(curr.next.val === target) {
+				curr.next = curr.next.next;
+			} else {
+				curr = curr.next;
+			}
+		}
+
+		return sentinel.next;
+	}
+
 	printlist(head: ls): void {
 		if (!head) {
 			return
