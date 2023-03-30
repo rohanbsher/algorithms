@@ -1,3 +1,35 @@
+
+function has_cycle(head) {
+
+  if(!head) {
+    return false
+  }
+
+  let fast = head
+  let slow = head
+
+  // 1 - 3 - 4 - 8 - null
+  //             f
+  //             s   
+ 
+  while(fast && fast.next) {
+    fast = fast.next.next
+    slow = slow.next
+
+    if(slow === fast) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+console.log(has_cycle(head) == true)
+console.log(has_cycle(head2) == false)
+
+
+
+
 /*
 '''
 Given a linked list and an integer k, reverse the list in groups of k.
