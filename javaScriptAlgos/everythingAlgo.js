@@ -1,3 +1,90 @@
+class Node {
+  constructor(val, left=null, right=null){
+    this.val = val
+    this.left = left
+    this.right = right
+  }
+}
+
+// queue = 8 5 12 3 6 11 13
+
+/*
+        8    -  n
+      /   \
+     5     12
+    / \    / \
+   3   6  11 13
+*/
+
+// let treee = new Node(8, 
+//     new Node(5, new Node(3, new Node(6)))
+//               ,new Node(12, new Node(11), new Node(13)))
+let tree = new Node(8)
+let leftTree = new Node(5, new Node(3), new Node(6))
+let rightTree = new Node(12, new Node(11), new Node(13))
+tree.left = leftTree
+tree.right = rightTree
+
+// BFS = print 8 bfs(5) print 5 bfs(3) print 3
+// go deep first 
+function bfs(tree){
+  if(!tree){
+    return
+  }  
+
+  console.log(tree.val) // 8 5 3 6 12 11 13
+  bfs(tree.left)
+  bfs(tree.right)
+}
+
+
+
+// DFS
+// go breadth first ==
+
+function dfs(tree){
+  if(!tree){
+    return
+  }
+  let queue = [tree] // 5
+
+  while(queue.length > 0){
+    let node = queue.shift()
+
+    console.log(node.val)
+
+    if(node.left){
+      queue.push(node.left)
+    }
+
+    if(node.right){
+      queue.push(node.right)
+    }
+  }
+
+}
+
+
+// console.log(bfs(tree))
+
+console.log(dfs(tree))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function has_cycle(head) {
 
