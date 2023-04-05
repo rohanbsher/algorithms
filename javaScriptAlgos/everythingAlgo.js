@@ -1,3 +1,224 @@
+/*
+'''
+Given a linked list of numbers and a pivot k, partition the linked list so that all nodes less than k come before nodes greater than or equal to k.
+
+EXAMPLE(S)
+Given the linked list 5 -> 1 -> 8 -> 0 -> 3 and k = 5, the solution could be
+1 -> 0 -> 3 -> 5 -> 8
+
+or any of the following:
+0 -> 1 -> 3 -> 5 -> 8
+0 -> 3 -> 1 -> 5 -> 8
+1 -> 3 -> 0 -> 5 -> 8
+3 -> 0 -> 1 -> 5 -> 8
+3 -> 1 -> 0 -> 5 -> 8
+ 
+
+FUNCTION SIGNATURE
+def partition(head: Node, k: int) -> Node:
+'''
+*/
+
+// joined using Google meet
+/*
+'''
+🔎 EXPLORE
+What are some other insightful & revealing test cases?
+valid case = 1 -> 1 -> 2 k=2 | ans = 1 - 1 - 2
+
+0 - 1 - 0 - 2 k=1  | ans = 0 - 0 - 1 - 2
+
+empty list = null
+
+0 0 0 0 k = 2  | ans = 0 0 0 0 => assume the pivot k is in list
+
+🧠 BRAINSTORM
+What approaches could work?
+Algorithm 1:
+Time: O(N)
+Space: O(N)
+
+Brute => 
+create a new list 
+loop through the existing list and basically if the value is less
+than list.
+
+1 - 4 - 7 - 5 - 8 => 1 - 3 - 4 - 5  | k = 5
+        s   
+                  f
+
+4 - 1 - 5 - 8 - 6 => 1 - 4 - 5 - 6 - 8 | k = 5
+        s
+                  f
+
+if(f === null){
+  return head
+}
+
+if(s < k){
+  s = s.next
+  f = f.next
+} else {
+    if (f < k){
+      swap s and k
+      s = s.next
+      f = f.next
+    } else {
+      f = f.next
+    }
+}
+
+
+if(s<k){
+  move s to next pointer
+}
+
+if(l < k)
+
+newList = 1 3 4
+greaterThanOrEqual = [5, 6]
+
+until there is something in greaterThanOrEqual push to newList
+basically push it to the list
+
+loop over the array greaterThanOrEqual and push to newList
+
+1 3 4 5 6
+
+
+
+
+
+📆 PLAN
+Outline of algorithm #: 
+
+if(f === null){
+  return head
+}
+
+if(s < k){
+  s = s.next
+  f = f.next
+} else {
+    if (f < k){
+      swap s and k
+      s = s.next
+      f = f.next
+    } else {
+      f = f.next
+    }
+}
+
+🛠️ IMPLEMENT
+Write your algorithm.
+ 
+
+🧪 VERIFY
+Run tests. Methodically debug & analyze issues.
+
+'''
+*/
+
+class Node {
+  constructor(val, next=null){
+    this.val = val
+    this.next = next
+  }
+
+  toString() {
+    let result = String(this.val);
+    if (this.next) {
+      result += ` -> ${this.next.toString()}`;
+    }
+    return result;
+  }
+}
+
+
+
+
+let list = new Node(6, new Node(4, new Node(5, new Node(1))))
+
+
+function partition(list, pivot) {
+
+  // 1 //no element=null
+  if(!list || !list.next){
+    return list
+  }
+
+  let s = list
+  let f = list.next
+
+/*
+
+5 -> 1 -> 8 -> 0 -> 3 and k = 0
+s
+               f
+
+*/
+
+  while(s && f){
+    console.log(s.val + "   " + f.val)
+    if(s.val < pivot){ 
+      s = s.next
+      f = f.next
+    } else {
+      if(f.val <= pivot){
+        // s is not less than pivot
+        // f is less than pivot
+        // swap
+        let temp = s.val
+        s.val = f.val
+        f.val = temp
+
+        s = s.next
+        f = f.next
+      } else {
+        f = f.next
+      }
+    }
+  }
+
+return list
+}
+
+// 5 -> 1 -> 8 -> 0 -> 3 and k = 0
+//the solution could be 0 -> 5 -> 1 -> 8 -> 3
+
+let list2 = new Node(5, new Node(-1, new Node(8, new Node(0, new Node(3)))))
+let list3 = new Node(9, new Node(5, new Node(8, new Node(0, new Node(3)))))
+console.log(partition(list2, -1).toString()) // 1 4 5 6
+console.log(partition(list3, 9).toString()) // 1 4 5 6
+
+// space = O(1) constant
+// time = O(N) linear
+
+/*
+2 pointers approach
+This solution is significantly harder but definitely recommended. Use two-pointers. one is the curr pointer and one is holding onto the first node with a greater than value. As you're iterating curr, if the value is greater than pivot, just keep moving. If the value is less than the pivot, swap the value with the node at the other pointer and then move both pointers forward. You will need to handle the special case at the front of the list.
+Make sure their solution works if everything is greater than or equal to the pivot (and the other way around)
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class Node {
   constructor(val, left=null, right=null){
     this.val = val
