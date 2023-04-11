@@ -1,5 +1,77 @@
 /*
 '''
+
+function solution(num) {
+    
+    /*
+    121
+    121 % 10 = 1
+    121 / 10 = 12
+    
+    12
+    12 % 10 = 2
+    12 / 10 = 2
+    
+    2
+    2 % 10 = 2
+    2 / 10 = 0
+    
+    121
+    
+    num = 121
+    let plaindromeNum = 121
+    
+    121 === 121
+    
+    
+    use a while loop to create an array of all the numbers modulo
+    we're grabbing from the back so we will have the number from back
+    
+    convert the number array to num and compare
+    
+    
+    
+    let tempNum = num
+    let plaindromeNum = [];
+    
+    while(tempNum > 0) {
+        plaindromeNum.push(tempNum % 10) 
+        tempNum = Math.floor(tempNum/10)
+    }
+
+    let convertedNum = Number((plaindromeNum.map(i => i)).join(''))
+    
+    return num === convertedNum; 
+}   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Given a linked list of numbers and a pivot k, partition the linked list so that all nodes less than k come before nodes greater than or equal to k.
 
 EXAMPLE(S)
