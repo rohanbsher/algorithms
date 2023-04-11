@@ -46,6 +46,8 @@ function addDigits(changeNum) {
 
 convert a number to its binary representation :  Number(n.toString(2))
 
+Given a positive hexadecimal integer represented as a string, convert it to a decimal form as an integer : return parseInt(n, 16)
+
 
 
 
