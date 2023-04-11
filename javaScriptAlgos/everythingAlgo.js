@@ -1,5 +1,47 @@
 /*
 '''
+// keep summing of all digits until they reach 1 digit 
+
+function solution(num) {
+    
+    let sumOfAllDigits = addDigits(num)
+    
+    // 999 = 27 = 9
+    // 99999999999 = 109 = 11 = 2
+    
+    while(sumOfAllDigits > 10){
+        sumOfAllDigits = addDigits(sumOfAllDigits)
+    }
+   
+    return sumOfAllDigits
+
+}
+
+function addDigits(changeNum) {
+    let sumDigits = 0
+    while(changeNum > 0){
+        sumDigits += changeNum % 10
+        changeNum = Math.floor(changeNum / 10)
+    }
+    
+    return Number(sumDigits)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 convert a number to its binary representation :  Number(n.toString(2))
