@@ -1,7 +1,16 @@
 /*
 '''
 
-function solution(num) {
+
+convert a number to its binary representation :  Number(n.toString(2))
+
+
+
+
+
+
+
+function isDigitPalindrom(num) {
     
     /*
     121
