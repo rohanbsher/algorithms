@@ -1,5 +1,31 @@
 /*
 '''
+Given two binary numbers represented as strings a and b, return their sum as a binary string.
+
+function solution(a, b) {
+    
+    let numA = parseInt(a, 2)
+    let numB = parseInt(b, 2)
+    
+    let add = numA + numB
+
+    return add.toString(2)    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // keep summing of all digits until they reach 1 digit 
 
 function solution(num) {
