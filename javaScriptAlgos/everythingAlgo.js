@@ -1,5 +1,46 @@
 /*
 '''
+
+function solution(n) {
+    
+    let fizzBuzzArr = []
+    
+    for(let i=1; i <= n; i++) {
+        let divisibleByThree = (i % 3 === 0)
+        let divisibleByFive = (i % 5 === 0)
+        
+        if(divisibleByThree && divisibleByFive){
+            fizzBuzzArr.push("FizzBuzz")
+        } else if (divisibleByThree) {
+            fizzBuzzArr.push('Fizz')
+        } else if (divisibleByFive) { 
+            fizzBuzzArr.push('Buzz')
+        } else {
+            fizzBuzzArr.push((i).toString())
+        }
+    }
+    
+    console.log(fizzBuzzArr)
+    
+    return fizzBuzzArr    
+        
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Given two binary numbers represented as strings a and b, return their sum as a binary string.
 
 function solution(a, b) {
