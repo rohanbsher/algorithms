@@ -1,5 +1,19 @@
 /*
 
+reverse a string
+
+function solution(string) {
+    return string.split('').reverse().join('')
+}
+
+
+
+
+
+
+
+
+
 check if string is capital 
 
 function solution(s) {
