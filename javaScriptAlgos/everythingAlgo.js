@@ -1,5 +1,25 @@
 /*
 
+check if string is capital 
+
+function solution(s) {
+    
+    if(s === s.toUpperCase()){
+        return true
+    } else if (s[0] === s[0].toUpperCase() && s.slice(1) === s.slice(1).toLowerCase()){
+        return true
+    }
+    
+    return false
+}
+
+
+
+
+
+
+
+
 Given a string s consisting of Latin letters and digits, change each of its digit to the corresponding number of ones.
 
 function solution(s) {
