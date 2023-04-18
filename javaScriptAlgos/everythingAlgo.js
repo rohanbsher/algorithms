@@ -1,4 +1,40 @@
 /*
+
+Given a string s consisting of Latin letters and digits, change each of its digit to the corresponding number of ones.
+
+function solution(s) {
+    
+    let returnStr = ''
+    
+    for(let i=0; i<s.length; i++){
+        if(Number.isInteger(parseInt(s[i]))){
+            const repeat1 = '1'.repeat(s[i])
+            returnStr += repeat1
+        } else {
+            returnStr += s[i]            
+        }
+    }
+    
+    return returnStr
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 '''
 
 function solution(n) {
