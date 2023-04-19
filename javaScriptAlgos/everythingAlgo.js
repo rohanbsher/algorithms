@@ -1,5 +1,51 @@
 /*
 
+
+
+
+/// numOfOddElements
+// Binary trees are already defined with this interface:
+// function Tree(x) {
+//   this.value = x;
+//   this.left = null;
+//   this.right = null;
+// }
+function solution(root) {
+    
+    let numOfOddElements = 0
+    
+    function dfs(root){
+        if(!root) {
+            return
+        }
+        
+        if(root.value % 2 !== 0) {
+            numOfOddElements++
+        }
+        
+        dfs(root.left)
+        dfs(root.right)
+    }
+    
+    dfs(root)
+    
+    return numOfOddElements
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 reverse a string
 
 function solution(string) {
