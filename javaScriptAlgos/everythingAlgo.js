@@ -2,6 +2,58 @@
 
 
 
+// valuesRepeatedExactlyKTimes
+// Binary trees are already defined with this interface:
+// function Tree(x) {
+//   this.value = x;
+//   this.left = null;
+//   this.right = null;
+// }
+
+
+function solution(root, k) {
+    let valuesRepeatedExactlyKTimes = -1
+    let mapValueWithFreq = new Map()
+    
+    function dfs(root){
+        if(!root){
+            return 
+        }
+        
+        mapValueWithFreq.set(root.value, (mapValueWithFreq.get(root.value) || 0) +1)
+        
+        dfs(root.left)
+        dfs(root.right)
+    }
+    dfs(root)
+    
+    
+    mapValueWithFreq.forEach((value, key) => {
+        if(value === k) {
+            if(key < valuesRepeatedExactlyKTimes || valuesRepeatedExactlyKTimes < 1){
+                valuesRepeatedExactlyKTimes = key
+            }
+        }
+    })
+    
+    console.log(mapValueWithFreq)
+    
+    return valuesRepeatedExactlyKTimes
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /// numOfOddElements
 // Binary trees are already defined with this interface:
