@@ -1,5 +1,45 @@
 /*
 
+//  Given a linked list, count the number of nodes from the kth position (from the head) to the end of the list.
+//
+function solution(head, k) {
+   
+   if(k<1){
+       return 0
+   }
+   
+   
+   let countLengthOfList = 1
+   let numOfNodes = -1
+   
+   while(head){
+       if(countLengthOfList >= k){
+           numOfNodes++
+       }
+       
+       head = head.next
+       countLengthOfList++
+   }
+   
+   if(countLengthOfList <= k){
+       return -1
+   } 
+   
+   return numOfNodes+1
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 Given a linked list, return the kth element from the end of the list.
 
 You may assume all elements have a positive integer value.
