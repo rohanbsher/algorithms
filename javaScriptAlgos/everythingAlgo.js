@@ -4,6 +4,14 @@
 
 
 //
+// Singly-linked lists are already defined with this interface:
+// function ListNode(x) {
+//   this.value = x;
+//   this.next = null;
+// }
+
+
+//
 function solution(head, k) {
     
     let copyFromKthPos = []
@@ -19,17 +27,15 @@ function solution(head, k) {
         node = node.next
         counter++
     }
-    console.log(copyFromKthPos.length + " Length ")
-    console.log(copyFromKthPos + " arr ")
    
-   
-    if(copyFromKthPos.length < k && counter <= k){
+    if(counter <= k){
         return [-1]
     }
     
     
     return copyFromKthPos
 }
+
 
 
 
