@@ -1,5 +1,97 @@
 /*
 
+Given a linked list, return the kth element from the end of the list.
+
+You may assume all elements have a positive integer value.
+If K exceeds the length of the list, return -1 instead.
+
+function solution(list, k) {
+    
+    let arr = []
+    
+    while(list){
+        arr.push(list.value)
+        list = list.next
+    }
+    
+    if(k<1 || k>arr.length){
+        return -1
+    }
+    
+    return arr[arr.length-k]
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Singly-linked lists are already defined with this interface:
+// function ListNode(x) {
+//   this.value = x;
+//   this.next = null;
+// }
+//
+function solution(list, k) {
+    
+    let arr = []
+    
+    while(list){
+        arr.push(list.value)
+        list = list.next
+    }
+    
+    if(k<1 || k>arr.length){
+        return -1
+    }
+    
+    return arr[arr.length-k]
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // valuesRepeatedExactlyKTimes
