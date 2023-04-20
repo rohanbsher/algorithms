@@ -1,5 +1,51 @@
 /*
 
+//Given a linked list, make a copy of the list from the kth position (from the head) to the end of the list.
+
+
+//
+function solution(head, k) {
+    
+    let copyFromKthPos = []
+    let node = head
+    let counter = 1
+    
+    while(node) {
+        
+        if(counter >= k){
+            copyFromKthPos.push(node.value)
+        }
+        
+        node = node.next
+        counter++
+    }
+    console.log(copyFromKthPos.length + " Length ")
+    console.log(copyFromKthPos + " arr ")
+   
+   
+    if(copyFromKthPos.length < k && counter <= k){
+        return [-1]
+    }
+    
+    
+    return copyFromKthPos
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //  Given a linked list, count the number of nodes from the kth position (from the head) to the end of the list.
 //
 function solution(head, k) {
