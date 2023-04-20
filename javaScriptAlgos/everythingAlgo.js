@@ -1,4 +1,82 @@
+
 /*
+
+
+ Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order starting from the top left element.
+
+
+
+
+function solution(m) {
+    
+    let spiralMatrix = []
+    
+    if(m.length < 1){
+        return spiralMatrix
+    }
+    
+    let matrixLength = m.length-1
+    let matrixRow = m[0].length-1
+    
+    let top = 0, left = 0, right = matrixRow, bottom = matrixLength
+    
+    while(top <= bottom && left <= right){
+        
+        for(let i=left; i <= right; i++){
+            spiralMatrix.push(m[top][i])
+        }
+        top++
+        
+        for(let i=top; i <= bottom; i++){
+            spiralMatrix.push(m[i][right])
+        }
+        right--
+        
+        if(top <= bottom) {
+            
+            for(let i=right; i >= left; i--){
+                spiralMatrix.push(m[bottom][i])
+            }
+            bottom--
+        }
+        
+        if(left <= right) {
+            
+            for(let i=bottom; i>= top; i--) {
+                spiralMatrix.push(m[i][left])
+            }
+            left++
+        }
+    }
+     
+    return spiralMatrix
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function solution(array) {
     
