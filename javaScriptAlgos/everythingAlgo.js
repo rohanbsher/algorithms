@@ -1,6 +1,50 @@
 
 /*
 
+var deepestLeavesSum = function(root) {
+    let sumOfDeepestLeaves = 0
+    let level = 0
+    let deepestLevelSum = 0     
+
+    let queue = [root]
+
+    while(queue.length > 0){
+        let levelSize = queue.length
+        let levelSum = 0
+
+        for(let i=0 ; i<levelSize; i++){
+            let node = queue.shift()
+            levelSum += node.val
+
+            if(node.left){
+                queue.push(node.left)
+            }
+            if(node.right){
+                queue.push(node.right)
+            }
+        }
+        deepestLevelSum = levelSum
+    }
+    return deepestLevelSum
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order starting from the top left element.
 
