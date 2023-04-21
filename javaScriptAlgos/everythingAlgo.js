@@ -1,4 +1,1079 @@
 
+/*
+
+var maxPathSum = function(root) {
+    let maxPathSum = -Infinity
+
+    function dfs(root){
+        if(!root){
+            return 0
+        }
+        
+
+        let leftSum = dfs(root.left)
+        let rightSum = dfs(root.right)
+
+        let currPathSum = Math.max(leftSum+root.val, rightSum+root.val, leftSum+rightSum+root.val, root.val)
+
+        maxPathSum = Math.max(currPathSum, maxPathSum)
+
+        return Math.max(root.val, leftSum + root.val, rightSum + root.val)
+    }
+    dfs(root)
+
+    return maxPathSum
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var deepestLeavesSum = function(root) {
+    let sumOfDeepestLeaves = 0
+    let level = 0
+    let deepestLevelSum = 0     
+
+    let queue = [root]
+
+    while(queue.length > 0){
+        let levelSize = queue.length
+        let levelSum = 0
+
+        for(let i=0 ; i<levelSize; i++){
+            let node = queue.shift()
+            levelSum += node.val
+
+            if(node.left){
+                queue.push(node.left)
+            }
+            if(node.right){
+                queue.push(node.right)
+            }
+        }
+        deepestLevelSum = levelSum
+    }
+    return deepestLevelSum
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order starting from the top left element.
+
+
+
+
+function solution(m) {
+    
+    let spiralMatrix = []
+    
+    if(m.length < 1){
+        return spiralMatrix
+    }
+    
+    let matrixLength = m.length-1
+    let matrixRow = m[0].length-1
+    
+    let top = 0, left = 0, right = matrixRow, bottom = matrixLength
+    
+    while(top <= bottom && left <= right){
+        
+        for(let i=left; i <= right; i++){
+            spiralMatrix.push(m[top][i])
+        }
+        top++
+        
+        for(let i=top; i <= bottom; i++){
+            spiralMatrix.push(m[i][right])
+        }
+        right--
+        
+        if(top <= bottom) {
+            
+            for(let i=right; i >= left; i--){
+                spiralMatrix.push(m[bottom][i])
+            }
+            bottom--
+        }
+        
+        if(left <= right) {
+            
+            for(let i=bottom; i>= top; i--) {
+                spiralMatrix.push(m[i][left])
+            }
+            left++
+        }
+    }
+     
+    return spiralMatrix
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function solution(array) {
+    
+    // merge sort - ascending order
+    // [6 5 4 3 2 1]
+    // [ 6 5 4] [3 2 1]
+    // [6] [5 4] [3] [2 1]
+    // [6] [5] [4] [3] [2] [1]
+    // [6] [4 5] [3] [1 2]
+    // [4 5 6] [1 2 3]
+    // [1 2 3 4 5 6]
+    
+    if(array.length <= 1){
+        return array
+    }
+    
+    let midPoint = Math.floor(array.length/2)
+    let leftArr = solution(array.slice(0, midPoint))
+    let rightArr = solution(array.slice(midPoint, array.length))
+    
+    return merge(leftArr, rightArr)
+    
+    function merge(leftArr, rightArr){
+        let arr3 = []
+        let leftIdx = 0
+        let rightIdx = 0
+        
+        while(leftArr.length > leftIdx && rightArr.length > rightIdx){
+            if(leftArr[leftIdx] <= rightArr[rightIdx]){
+                arr3.push(leftArr[leftIdx])
+                leftIdx++
+            } else {
+                arr3.push(rightArr[rightIdx])
+                rightIdx++
+            }
+        }
+        
+        return arr3.concat(leftArr.slice(leftIdx)).concat(rightArr.slice(rightIdx))
+    }
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Given a linked list, make a copy of the list from the kth position (from the head) to the end of the list.
+
+
+//
+// Singly-linked lists are already defined with this interface:
+// function ListNode(x) {
+//   this.value = x;
+//   this.next = null;
+// }
+
+
+//
+function solution(head, k) {
+    
+    let copyFromKthPos = []
+    let node = head
+    let counter = 1
+    
+    while(node) {
+        
+        if(counter >= k){
+            copyFromKthPos.push(node.value)
+        }
+        
+        node = node.next
+        counter++
+    }
+   
+    if(counter <= k){
+        return [-1]
+    }
+    
+    
+    return copyFromKthPos
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  Given a linked list, count the number of nodes from the kth position (from the head) to the end of the list.
+//
+function solution(head, k) {
+   
+   if(k<1){
+       return 0
+   }
+   
+   
+   let countLengthOfList = 1
+   let numOfNodes = -1
+   
+   while(head){
+       if(countLengthOfList >= k){
+           numOfNodes++
+       }
+       
+       head = head.next
+       countLengthOfList++
+   }
+   
+   if(countLengthOfList <= k){
+       return -1
+   } 
+   
+   return numOfNodes+1
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+Given a linked list, return the kth element from the end of the list.
+
+You may assume all elements have a positive integer value.
+If K exceeds the length of the list, return -1 instead.
+
+function solution(list, k) {
+    
+    let arr = []
+    
+    while(list){
+        arr.push(list.value)
+        list = list.next
+    }
+    
+    if(k<1 || k>arr.length){
+        return -1
+    }
+    
+    return arr[arr.length-k]
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Singly-linked lists are already defined with this interface:
+// function ListNode(x) {
+//   this.value = x;
+//   this.next = null;
+// }
+//
+function solution(list, k) {
+    
+    let arr = []
+    
+    while(list){
+        arr.push(list.value)
+        list = list.next
+    }
+    
+    if(k<1 || k>arr.length){
+        return -1
+    }
+    
+    return arr[arr.length-k]
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// valuesRepeatedExactlyKTimes
+// Binary trees are already defined with this interface:
+// function Tree(x) {
+//   this.value = x;
+//   this.left = null;
+//   this.right = null;
+// }
+
+
+function solution(root, k) {
+    let valuesRepeatedExactlyKTimes = -1
+    let mapValueWithFreq = new Map()
+    
+    function dfs(root){
+        if(!root){
+            return 
+        }
+        
+        mapValueWithFreq.set(root.value, (mapValueWithFreq.get(root.value) || 0) +1)
+        
+        dfs(root.left)
+        dfs(root.right)
+    }
+    dfs(root)
+    
+    
+    mapValueWithFreq.forEach((value, key) => {
+        if(value === k) {
+            if(key < valuesRepeatedExactlyKTimes || valuesRepeatedExactlyKTimes < 1){
+                valuesRepeatedExactlyKTimes = key
+            }
+        }
+    })
+    
+    console.log(mapValueWithFreq)
+    
+    return valuesRepeatedExactlyKTimes
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/// numOfOddElements
+// Binary trees are already defined with this interface:
+// function Tree(x) {
+//   this.value = x;
+//   this.left = null;
+//   this.right = null;
+// }
+function solution(root) {
+    
+    let numOfOddElements = 0
+    
+    function dfs(root){
+        if(!root) {
+            return
+        }
+        
+        if(root.value % 2 !== 0) {
+            numOfOddElements++
+        }
+        
+        dfs(root.left)
+        dfs(root.right)
+    }
+    
+    dfs(root)
+    
+    return numOfOddElements
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+reverse a string
+
+function solution(string) {
+    return string.split('').reverse().join('')
+}
+
+
+
+
+
+
+
+
+
+check if string is capital 
+
+function solution(s) {
+    
+    if(s === s.toUpperCase()){
+        return true
+    } else if (s[0] === s[0].toUpperCase() && s.slice(1) === s.slice(1).toLowerCase()){
+        return true
+    }
+    
+    return false
+}
+
+
+
+
+
+
+
+
+Given a string s consisting of Latin letters and digits, change each of its digit to the corresponding number of ones.
+
+function solution(s) {
+    
+    let returnStr = ''
+    
+    for(let i=0; i<s.length; i++){
+        if(Number.isInteger(parseInt(s[i]))){
+            const repeat1 = '1'.repeat(s[i])
+            returnStr += repeat1
+        } else {
+            returnStr += s[i]            
+        }
+    }
+    
+    return returnStr
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+
+function solution(n) {
+    
+    let fizzBuzzArr = []
+    
+    for(let i=1; i <= n; i++) {
+        let divisibleByThree = (i % 3 === 0)
+        let divisibleByFive = (i % 5 === 0)
+        
+        if(divisibleByThree && divisibleByFive){
+            fizzBuzzArr.push("FizzBuzz")
+        } else if (divisibleByThree) {
+            fizzBuzzArr.push('Fizz')
+        } else if (divisibleByFive) { 
+            fizzBuzzArr.push('Buzz')
+        } else {
+            fizzBuzzArr.push((i).toString())
+        }
+    }
+    
+    console.log(fizzBuzzArr)
+    
+    return fizzBuzzArr    
+        
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Given two binary numbers represented as strings a and b, return their sum as a binary string.
+
+function solution(a, b) {
+    
+    let numA = parseInt(a, 2)
+    let numB = parseInt(b, 2)
+    
+    let add = numA + numB
+
+    return add.toString(2)    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// keep summing of all digits until they reach 1 digit 
+
+function solution(num) {
+    
+    let sumOfAllDigits = addDigits(num)
+    
+    // 999 = 27 = 9
+    // 99999999999 = 109 = 11 = 2
+    
+    while(sumOfAllDigits > 10){
+        sumOfAllDigits = addDigits(sumOfAllDigits)
+    }
+   
+    return sumOfAllDigits
+
+}
+
+function addDigits(changeNum) {
+    let sumDigits = 0
+    while(changeNum > 0){
+        sumDigits += changeNum % 10
+        changeNum = Math.floor(changeNum / 10)
+    }
+    
+    return Number(sumDigits)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+convert a number to its binary representation :  Number(n.toString(2))
+
+Given a positive hexadecimal integer represented as a string, convert it to a decimal form as an integer : return parseInt(n, 16)
+
+
+
+
+
+
+
+function isDigitPalindrom(num) {
+    
+    /*
+    121
+    121 % 10 = 1
+    121 / 10 = 12
+    
+    12
+    12 % 10 = 2
+    12 / 10 = 2
+    
+    2
+    2 % 10 = 2
+    2 / 10 = 0
+    
+    121
+    
+    num = 121
+    let plaindromeNum = 121
+    
+    121 === 121
+    
+    
+    use a while loop to create an array of all the numbers modulo
+    we're grabbing from the back so we will have the number from back
+    
+    convert the number array to num and compare
+    
+    
+    
+    let tempNum = num
+    let plaindromeNum = [];
+    
+    while(tempNum > 0) {
+        plaindromeNum.push(tempNum % 10) 
+        tempNum = Math.floor(tempNum/10)
+    }
+
+    let convertedNum = Number((plaindromeNum.map(i => i)).join(''))
+    
+    return num === convertedNum; 
+}   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Given a linked list of numbers and a pivot k, partition the linked list so that all nodes less than k come before nodes greater than or equal to k.
+
+EXAMPLE(S)
+Given the linked list 5 -> 1 -> 8 -> 0 -> 3 and k = 5, the solution could be
+1 -> 0 -> 3 -> 5 -> 8
+
+or any of the following:
+0 -> 1 -> 3 -> 5 -> 8
+0 -> 3 -> 1 -> 5 -> 8
+1 -> 3 -> 0 -> 5 -> 8
+3 -> 0 -> 1 -> 5 -> 8
+3 -> 1 -> 0 -> 5 -> 8
+ 
+
+FUNCTION SIGNATURE
+def partition(head: Node, k: int) -> Node:
+'''
+*/
+
+// joined using Google meet
+/*
+'''
+🔎 EXPLORE
+What are some other insightful & revealing test cases?
+valid case = 1 -> 1 -> 2 k=2 | ans = 1 - 1 - 2
+
+0 - 1 - 0 - 2 k=1  | ans = 0 - 0 - 1 - 2
+
+empty list = null
+
+0 0 0 0 k = 2  | ans = 0 0 0 0 => assume the pivot k is in list
+
+🧠 BRAINSTORM
+What approaches could work?
+Algorithm 1:
+Time: O(N)
+Space: O(N)
+
+Brute => 
+create a new list 
+loop through the existing list and basically if the value is less
+than list.
+
+1 - 4 - 7 - 5 - 8 => 1 - 3 - 4 - 5  | k = 5
+        s   
+                  f
+
+4 - 1 - 5 - 8 - 6 => 1 - 4 - 5 - 6 - 8 | k = 5
+        s
+                  f
+
+if(f === null){
+  return head
+}
+
+if(s < k){
+  s = s.next
+  f = f.next
+} else {
+    if (f < k){
+      swap s and k
+      s = s.next
+      f = f.next
+    } else {
+      f = f.next
+    }
+}
+
+
+if(s<k){
+  move s to next pointer
+}
+
+if(l < k)
+
+newList = 1 3 4
+greaterThanOrEqual = [5, 6]
+
+until there is something in greaterThanOrEqual push to newList
+basically push it to the list
+
+loop over the array greaterThanOrEqual and push to newList
+
+1 3 4 5 6
+
+
+
+
+
+📆 PLAN
+Outline of algorithm #: 
+
+if(f === null){
+  return head
+}
+
+if(s < k){
+  s = s.next
+  f = f.next
+} else {
+    if (f < k){
+      swap s and k
+      s = s.next
+      f = f.next
+    } else {
+      f = f.next
+    }
+}
+
+🛠️ IMPLEMENT
+Write your algorithm.
+ 
+
+🧪 VERIFY
+Run tests. Methodically debug & analyze issues.
+
+'''
+*/
+
+class Node {
+  constructor(val, next=null){
+    this.val = val
+    this.next = next
+  }
+
+  toString() {
+    let result = String(this.val);
+    if (this.next) {
+      result += ` -> ${this.next.toString()}`;
+    }
+    return result;
+  }
+}
+
+
+
+
+let list = new Node(6, new Node(4, new Node(5, new Node(1))))
+
+
+function partition(list, pivot) {
+
+  // 1 //no element=null
+  if(!list || !list.next){
+    return list
+  }
+
+  let s = list
+  let f = list.next
+
+/*
+
+5 -> 1 -> 8 -> 0 -> 3 and k = 0
+s
+               f
+
+*/
+
+  while(s && f){
+    console.log(s.val + "   " + f.val)
+    if(s.val < pivot){ 
+      s = s.next
+      f = f.next
+    } else {
+      if(f.val <= pivot){
+        // s is not less than pivot
+        // f is less than pivot
+        // swap
+        let temp = s.val
+        s.val = f.val
+        f.val = temp
+
+        s = s.next
+        f = f.next
+      } else {
+        f = f.next
+      }
+    }
+  }
+
+return list
+}
+
+// 5 -> 1 -> 8 -> 0 -> 3 and k = 0
+//the solution could be 0 -> 5 -> 1 -> 8 -> 3
+
+let list2 = new Node(5, new Node(-1, new Node(8, new Node(0, new Node(3)))))
+let list3 = new Node(9, new Node(5, new Node(8, new Node(0, new Node(3)))))
+console.log(partition(list2, -1).toString()) // 1 4 5 6
+console.log(partition(list3, 9).toString()) // 1 4 5 6
+
+// space = O(1) constant
+// time = O(N) linear
+
+/*
+2 pointers approach
+This solution is significantly harder but definitely recommended. Use two-pointers. one is the curr pointer and one is holding onto the first node with a greater than value. As you're iterating curr, if the value is greater than pivot, just keep moving. If the value is less than the pivot, swap the value with the node at the other pointer and then move both pointers forward. You will need to handle the special case at the front of the list.
+Make sure their solution works if everything is greater than or equal to the pivot (and the other way around)
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Node {
+  constructor(val, left=null, right=null){
+    this.val = val
+    this.left = left
+    this.right = right
+  }
+}
+
+// queue = 8 5 12 3 6 11 13
+
+/*
+        8    -  n
+      /   \
+     5     12
+    / \    / \
+   3   6  11 13
+*/
+
+// let treee = new Node(8, 
+//     new Node(5, new Node(3, new Node(6)))
+//               ,new Node(12, new Node(11), new Node(13)))
+let tree = new Node(8)
+let leftTree = new Node(5, new Node(3), new Node(6))
+let rightTree = new Node(12, new Node(11), new Node(13))
+tree.left = leftTree
+tree.right = rightTree
+
+// BFS = print 8 bfs(5) print 5 bfs(3) print 3
+// go deep first 
+function bfs(tree){
+  if(!tree){
+    return
+  }  
+
+  console.log(tree.val) // 8 5 3 6 12 11 13
+  bfs(tree.left)
+  bfs(tree.right)
+}
+
+
+
+// DFS
+// go breadth first ==
+
+function dfs(tree){
+  if(!tree){
+    return
+  }
+  let queue = [tree] // 5
+
+  while(queue.length > 0){
+    let node = queue.shift()
+
+    console.log(node.val)
+
+    if(node.left){
+      queue.push(node.left)
+    }
+
+    if(node.right){
+      queue.push(node.right)
+    }
+  }
+
+}
+
+
+// console.log(bfs(tree))
+
+console.log(dfs(tree))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function has_cycle(head) {
 
   if(!head) {
