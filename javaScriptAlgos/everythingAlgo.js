@@ -1,6 +1,47 @@
 
 /*
 
+var maxPathSum = function(root) {
+    let maxPathSum = -Infinity
+
+    function dfs(root){
+        if(!root){
+            return 0
+        }
+        
+
+        let leftSum = dfs(root.left)
+        let rightSum = dfs(root.right)
+
+        let currPathSum = Math.max(leftSum+root.val, rightSum+root.val, leftSum+rightSum+root.val, root.val)
+
+        maxPathSum = Math.max(currPathSum, maxPathSum)
+
+        return Math.max(root.val, leftSum + root.val, rightSum + root.val)
+    }
+    dfs(root)
+
+    return maxPathSum
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var deepestLeavesSum = function(root) {
     let sumOfDeepestLeaves = 0
     let level = 0
