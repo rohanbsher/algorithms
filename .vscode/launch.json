@@ -7,6 +7,14 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Run Backtrack Code",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/javaScriptAlgos/backtrack.js",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch Program",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/typeScriptAlgos/realScenarios/src/driver.ts",
