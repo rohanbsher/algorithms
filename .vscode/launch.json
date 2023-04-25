@@ -15,6 +15,14 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Find Height of Binary Tree",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/javaScriptAlgos/tree.js",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch Program",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/typeScriptAlgos/realScenarios/src/driver.ts",
