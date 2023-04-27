@@ -1,6 +1,102 @@
 
 /*
 '''
+
+'''
+Find Nodes Occurring K Times
+
+Given a binary tree and an integer (k), find and return an array of unique nodes that occur **at least (k) times** in the tree.
+
+For example, if Node(5) occurs 3 times in the tree, and (k) = 3, your result array would include the value of Node(5) (simply **5** in this case).
+ 
+
+EXAMPLE(S)
+    2
+ 2     3
+7 3  14 9
+
+k = 2, should return [2, 3]
+
+   12
+ 3    3
+1 _  6 _
+
+k = 2, should return [3]
+
+       12
+    3      3
+  1  _    6  _
+9  _     _ _
+
+k = 1, should return [12, 3, 1, 6, 9]
+ 
+
+FUNCTION SIGNATURE
+function findNodesOccuringKTimes(head, k) {
+'''
+
+use map and we loop through the tree
+push to array
+
+
+
+class TreeNode {
+  constructor(val, left, right) {
+    this.val = val;
+    this.left = left;
+    this.right = right;
+  }
+}
+
+
+function findNodesOccuringKTimes(tree, k) {
+  if(!tree){
+    return []
+  }
+
+  let trackFrequency = new Map()
+  let nodesRepeatingKTimes = new Set();
+
+  function dfs(root){
+    if(!root){
+      return
+    }
+
+    trackFrequency.set(root.val, (trackFrequency.get(root.val) || 0) +1)
+   
+    if(trackFrequency.get(root.val) >= k){
+      nodesRepeatingKTimes.add(root.val)
+    }
+
+    dfs(root.left)
+    dfs(root.right)
+  }
+
+  dfs(tree)
+  
+  return Array.from(nodesRepeatingKTimes)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 You're holding a silent auction with 650 bidders, assigning each bidder a numbered sign between 1-650. A person raises their sign when they want to make an offer.
 
 However, they sometimes hold the sign upside-down, and the auctioneer
