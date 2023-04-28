@@ -1,6 +1,53 @@
 
 /*
 
+function linearizeRowMajor(matrix) {
+
+  let result = []
+
+  for(let i=0; i<matrix.length; i++){
+    // console.log("here")
+    result = result.concat(matrix[i])
+  }
+
+  return result
+}
+
+function linearizeColumnMajor(matrix) {
+  let result = []
+
+  let row = matrix.length
+  let column = matrix[0].length
+  let left = 0
+  let top = 0
+
+  while(left<column){
+    for(let i=0; i<row; i++){
+      result.push(matrix[i][left])
+    }
+    left++
+  }
+
+  return result
+}
+
+let matrix = [
+  [ 1,  2,  3,  4,  5],
+  [ 6,  7,  8,  9, 10],
+  [11, 12, 13, 14, 15]
+];
+
+console.log(linearizeRowMajor(matrix))
+console.log(linearizeColumnMajor(matrix))
+
+
+
+
+
+
+
+
+
 iterative solution to Inorder Traversal
 
 '''
