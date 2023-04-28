@@ -1,6 +1,51 @@
 
 /*
+
+iterative solution to Inorder Traversal
+
 '''
+function solution(root) {
+    
+    if(!root){
+        return []
+    }
+    
+    let stack = []
+    let returnArr = []
+    let curr = root
+    
+        1
+        /\
+       2  3
+       /\
+      5 7
+    
+    while(stack.length > 0 || curr != null){
+        while(curr){
+            stack.push(curr)
+            curr = curr.left
+        }
+        
+        curr = stack.pop() // 1 7
+        returnArr.push(curr.value)
+        curr = curr.right
+    }
+    
+    return returnArr
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 '''
 Find Nodes Occurring K Times
