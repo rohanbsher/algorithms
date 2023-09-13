@@ -1,6 +1,379 @@
 
 /*
 
+function linearizeRowMajor(matrix) {
+
+  let result = []
+
+  for(let i=0; i<matrix.length; i++){
+    // console.log("here")
+    result = result.concat(matrix[i])
+  }
+
+  return result
+}
+
+function linearizeColumnMajor(matrix) {
+  let result = []
+
+  let row = matrix.length
+  let column = matrix[0].length
+  let left = 0
+  let top = 0
+
+  while(left<column){
+    for(let i=0; i<row; i++){
+      result.push(matrix[i][left])
+    }
+    left++
+  }
+
+  return result
+}
+
+let matrix = [
+  [ 1,  2,  3,  4,  5],
+  [ 6,  7,  8,  9, 10],
+  [11, 12, 13, 14, 15]
+];
+
+console.log(linearizeRowMajor(matrix))
+console.log(linearizeColumnMajor(matrix))
+
+
+
+
+
+
+
+
+
+iterative solution to Inorder Traversal
+
+'''
+function solution(root) {
+    
+    if(!root){
+        return []
+    }
+    
+    let stack = []
+    let returnArr = []
+    let curr = root
+    
+        1
+        /\
+       2  3
+       /\
+      5 7
+    
+    while(stack.length > 0 || curr != null){
+        while(curr){
+            stack.push(curr)
+            curr = curr.left
+        }
+        
+        curr = stack.pop() // 1 7
+        returnArr.push(curr.value)
+        curr = curr.right
+    }
+    
+    return returnArr
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+Find Nodes Occurring K Times
+
+Given a binary tree and an integer (k), find and return an array of unique nodes that occur **at least (k) times** in the tree.
+
+For example, if Node(5) occurs 3 times in the tree, and (k) = 3, your result array would include the value of Node(5) (simply **5** in this case).
+ 
+
+EXAMPLE(S)
+    2
+ 2     3
+7 3  14 9
+
+k = 2, should return [2, 3]
+
+   12
+ 3    3
+1 _  6 _
+
+k = 2, should return [3]
+
+       12
+    3      3
+  1  _    6  _
+9  _     _ _
+
+k = 1, should return [12, 3, 1, 6, 9]
+ 
+
+FUNCTION SIGNATURE
+function findNodesOccuringKTimes(head, k) {
+'''
+
+use map and we loop through the tree
+push to array
+
+
+
+class TreeNode {
+  constructor(val, left, right) {
+    this.val = val;
+    this.left = left;
+    this.right = right;
+  }
+}
+
+
+function findNodesOccuringKTimes(tree, k) {
+  if(!tree){
+    return []
+  }
+
+  let trackFrequency = new Map()
+  let nodesRepeatingKTimes = new Set();
+
+  function dfs(root){
+    if(!root){
+      return
+    }
+
+    trackFrequency.set(root.val, (trackFrequency.get(root.val) || 0) +1)
+   
+    if(trackFrequency.get(root.val) >= k){
+      nodesRepeatingKTimes.add(root.val)
+    }
+
+    dfs(root.left)
+    dfs(root.right)
+  }
+
+  dfs(tree)
+  
+  return Array.from(nodesRepeatingKTimes)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+You're holding a silent auction with 650 bidders, assigning each bidder a numbered sign between 1-650. A person raises their sign when they want to make an offer.
+
+However, they sometimes hold the sign upside-down, and the auctioneer
+mistakes their number for a different number. For example, bidder #6 
+raises their sign upside-down and could be mistaken for bidder #9.
+
+Write a function that underlines all numbers from 1-650 that can be
+misinterpreted for another number within that range when rotated 180 degrees.
+ 
+
+EXAMPLE(S)
+The number 6 should be underlined because it can be misinterpreted for the number 9 and vice versa.
+ 
+underLineMistakenNumbers(650):
+
+1,2,3,4,5,6,7,8,9,10
+Numbers that can be mistaken: 1,6,8,9,0
+Numbers that can't be mistaken: 2,3,4,5,7 
+
+If number contains a number that can't be mistaken or trailing zeros: disregard
+
+
+601
+
+109
+
+
+6, 9, 16, 18, 19,
+61, 66, 68, 81, 86,
+89, 91, 98, 99, 109,
+119, 161, 191, 601, 611
+
+
+Pseudocode:
+1. check for trailing zero | in-bound
+  - 160 = (160%10 === 0) will determine if it has trailing zero
+2. variable 6 - 9 
+3. string - reverse that string and switch 6-9
+601
+result string: "109"
+901
+
+string = ""
+string = value + string // preprend
+=  9
+09
+109
+
+string.reverse().join('')
+
+4. compare the string and ch
+if flipped == original -> can't be mistaken
+else (flipped != original) -> can be mistaken -> print
+
+-- if flipped out of bounds, continue
+
+166
+991
+
+
+
+FUNCTION SIGNATURE
+function underlineMistakenNumbers(upperBound) {
+def underlineMistakenNumbers(upperBound: int) -> None:
+'''
+
+
+function underlineMistakenNumbers(upperBound) {
+  const result = [];
+
+  for(let i = 1; i <= upperBound; i++){
+    if(i % 10 === 0) continue;
+    let reverseNum = reverse(i);
+    if(reverseNum > upperBound) continue;
+    if(reverseNum !== i) result.push(i)
+  }
+  return result
+}
+
+function reverse(i) {
+  let strNum = String(i)
+  let rev = strNum.split("").reverse();
+  let notmistakenNums = new Set(['2', '3', '4', '5', '7']);
+
+  for(let j = 0; j < rev.length; j++) {
+    if(notmistakenNums.has(rev[j])) {
+      return i; 
+    }
+    
+    if(rev[j] == '6') {
+      rev[j] = '9';
+    } else if(rev[j]  == '9') {
+      rev[j] = '6'
+    }
+  }
+
+  return Number(rev.join("")) 
+}
+
+console.log(underlineMistakenNumbers(650))
+
+
+
+//-------BACKTRACKING--------
+function underlineMistakenNumbers(upperBound) {
+  function getNumDigits(n) {
+    let count = 0
+    while (n > 0) {
+      count++
+      n = Math.floor(n / 10)
+    }
+    return count
+  }
+
+  function generatePermutations(length) {
+    const digits = ["0", "1", "6", "8", "9"]
+    const results = new Set()
+
+    function backtrack(numberStr) {
+      if (numberStr.length > 0)
+        results.add(Number(numberStr))
+
+      if (numberStr.length < length)
+        for (const digit of digits)
+          backtrack(numberStr + digit)
+    }
+
+    backtrack("")
+    return results
+  }
+
+  function underlineMistakenNumber(num) {
+    if (num % 10 === 0)
+      return
+
+    for (const digit of String(num))
+      if (!flippable.has(Number(digit)))
+        return
+
+    let flippedStr = ""
+    for (const digit of String(num)) {
+      if (digit === "6")
+        flippedStr = "9" + flippedStr
+      else if (digit === "9")
+        flippedStr = "6" + flippedStr
+      else
+        flippedStr = digit + flippedStr
+    }
+
+    const flippedNum = Number(flippedStr)
+
+    if (flippedNum === num || flippedNum > upperBound)
+      return
+
+    count++
+    console.log(count + ": " + num)
+  }
+
+  const nums = generatePermutations(getNumDigits(upperBound))
+  const flippable = new Set([1, 6, 8, 9, 0])
+  let count = 0
+  for (const num of nums)
+    if (num < upperBound)
+      underlineMistakenNumber(num)
+}
+
+underlineMistakenNumbers(650)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class Node {
   constructor(val, left=null, right=null){
     this.val = val
