@@ -15,6 +15,14 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Merge Sort",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/javaScriptAlgos/mergeSort.js",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Find Height of Binary Tree",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/javaScriptAlgos/tree.js",
@@ -23,7 +31,15 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "Graph",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/javaScriptAlgos/graphs.js",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "realScenarios",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/typeScriptAlgos/realScenarios/src/driver.ts",
       "runtimeArgs": ["-r", "ts-node/register"],
