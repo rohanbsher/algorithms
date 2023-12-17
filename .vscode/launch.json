@@ -45,6 +45,26 @@
       "runtimeArgs": ["-r", "ts-node/register"],
       "sourceMaps": true,
       "outFiles": ["${workspaceFolder}/**/*.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "coin change",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/dynamicProgramming/coinChangeNumberWays.ts",
+      "runtimeArgs": ["-r", "ts-node/register"],
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/**/*.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "count paths",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/dynamicProgramming/countPaths.ts",
+      "runtimeArgs": ["-r", "ts-node/register"],
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/**/*.js"]
     }
   ]
 }

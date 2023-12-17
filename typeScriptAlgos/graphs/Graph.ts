@@ -32,4 +32,6 @@ export class Graph {
 		}
 	}
 
+	dfs()
+
 }
