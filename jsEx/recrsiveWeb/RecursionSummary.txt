@@ -1,0 +1,26 @@
+Recursion is a divide and conquer algorithmic design pattern that breaks down problems in to subproblems of 
+same types until a problem is trivial enough to answer.
+
+this is the attempt i seal this knowledge and build the confidence and competence to be summarize
+and understand the concept once and for all. I am going to figure out fundamentally how to works.
+
+what is recursion ?
+
+Imagine cooking a pancake and stacking it on a plate and then stacking another pancake on top of the already existing
+pancake. 
+
+ p4 -> Last called function that returns in LIFO last in first out manner. 
+ p3
+ p2 -> second call 
+ p1 -> initial call | first pancake
+
+ moving from p1 -> p2 -> p3 -> p4 in this order the values computed in p1 can flow to method p2 using
+ parameters since recursion invovles calling the function iteself for example if we want to sum fib
+
+						fib(4) fib of 4 is sum of fib of 3 + fib of (2)
+						 /\
+						/  \
+				    fib(3)	fib(2)
+
+when the information flows from bottom when a base case is reached.
+

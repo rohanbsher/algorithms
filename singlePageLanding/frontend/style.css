@@ -1,0 +1,167 @@
+/* Global Styles and Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    line-height: 1.6;
+    color: #E0E0E0; /* Light color text for dark background */
+    padding: 20px;
+    background-color: #0d0e05;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    animation: fadeIn 1s ease-out;
+}
+
+.header-content {
+    position: relative;
+    text-align: center;
+    padding: 40px 20px;
+    margin: 0 auto;
+    color: #FFFFFF; /* Ensure visibility against dark background */
+}
+
+.scissors-image {
+    width: 100px;
+    height: auto;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    transform: translate(0%, 0%);
+    z-index: 10; /* Adjust if necessary to ensure visibility */
+}
+
+header {
+    background: #263238; /* Dark theme for header */
+    color: #FFFFFF;
+}
+
+section {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    background: rgba(38, 50, 56, 0.85); /* Slightly transparent dark theme */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Stronger shadow for depth */
+    backdrop-filter: blur(3px); /* Soft blur for background filter effect */
+    color: #ECEFF1; /* Light color text for content readability */
+    animation: fadeInUp 1s ease-out;
+}
+
+h2, p {
+    text-align: center; /* Center alignment for headings and text */
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    background: #37474F; /* Darker list item background for contrast */
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+li:hover {
+    transform: translateY(-5px); /* Subtle lift effect on hover */
+}
+#signup {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px 0; /* Increased padding for more vertical spacing */
+}
+
+#signupForm {
+    width: 80%; /* Increase the width of the form */
+    max-width: 600px; /* Adjusted for a wider form */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#signupForm input[type=email], #signupForm button {
+    width: 90%; /* Full width to match the form */
+    padding: 15px; /* Increased padding for larger touch area and visibility */
+    margin: 15px 0; /* Increased margin for better spacing */
+    border: 2px solid #B0BEC5; /* Slightly thicker border for definition */
+    border-radius: 5px; /* Rounded corners for a modern look */
+    background: #1C1C1E; /* Dark background for contrast */
+    color: #FFFFFF; /* Light text for readability */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Enhanced shadow for depth */
+    font-size: 18px; /* Larger font size for readability */
+    transition: all 0.3s ease; /* Smooth transition for interactions */
+}
+
+#signupForm button {
+    background-color: #FF5722; /* Vibrant button color */
+    cursor: pointer;
+    transform: translateY(0); /* Reset transform for animation */
+}
+
+#signupForm input[type=email]:focus, #signupForm button:hover {
+    border-color: #FF5722; /* Highlight color on focus/hover */
+    transform: scale(1.05); /* Slight scale effect for interaction feedback */
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15); /* Increased shadow on hover/focus */
+}
+
+/* Animation for each section on scroll */
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+section {
+    animation: slideInFromLeft 1s ease-out;
+}
+
+/* Apply animations to sections dynamically */
+section:nth-of-type(odd) {
+    animation-name: slideInFromLeft;
+}
+
+section:nth-of-type(even) {
+    animation-name: slideInFromRight; /* Create and use slideInFromRight for variety */
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #102027; /* Dark theme for footer */
+    color: #B0BEC5; /* Light text color for footer */
+}

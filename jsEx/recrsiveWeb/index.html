@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" src="main.js" defer></script>
+</head>
+<pre>
+These are three approaches to recursively calculating the sum of an array.
+Any recursive pattern will work as long as all indexes are counted exactly once.
+
+1. Dividing the first element in the array from the remainder of the array
+2. Dividing the last element in the array from the remainder of the array
+3. Dividing the array in half at the midpoint until there are <= 2 elements 
+
+let arr = [5, 5, 5, 5, 10, 10, 10, 20, 20, 10] // sum = 100
+
+Sum by separating the first index from the rest: <span id="sumFront"></span>
+Sum by separating the last index from the rest: <span id="sumBack"></span>
+Sum by splitting the array repeatedly in half: <span id="sumMiddle"></span>
+</pre>
+</html>
