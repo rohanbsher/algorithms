@@ -6,6 +6,27 @@
   "configurations": [
     {
       "type": "java",
+      "name": "BankApp",
+      "request": "launch",
+      "mainClass": "myProjects.bankingSystem.BankApp",
+      "projectName": "algorithms_c7c06739"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "myProject.Main",
+      "projectName": "algorithms_c7c06739"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "java.Main",
+      "projectName": "algorithms_c7c06739"
+    },
+    {
+      "type": "java",
       "name": "Main",
       "request": "launch",
       "mainClass": "Main",

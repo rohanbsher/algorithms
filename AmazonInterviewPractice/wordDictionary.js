@@ -62,7 +62,6 @@ TrieNode
 */
 
 class TrieNode {
-
 	constructor() {
 	  this.children = {} // stores children
 	  this.isEndOfWord = false;
